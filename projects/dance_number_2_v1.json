@@ -31,7 +31,10 @@
         "curve": "qsin",
         "name": "Dhol Roll into Family Clapping Groove",
         "description": "Smooth 2.0-second crossfade blending modern beats directly into Gallan Goodiyaan!"
-      }
+      },
+      "audioUrl": "./audio/d2/1_d2_1_veere_di_wedding.mp3",
+      "clipBaseStart": 15,
+      "clipBaseEnd": 62
     },
     {
       "id": "d2_song2",
@@ -57,7 +60,10 @@
         "curve": "qsin",
         "name": "Snappy Drum Fill into Wedding Thumkas",
         "description": "Seamless 2.0-second beat crossfade into Nachde Ne Saare!"
-      }
+      },
+      "audioUrl": "./audio/d2/2_d2_2_gallan_goodiyaan.mp3",
+      "clipBaseStart": 45,
+      "clipBaseEnd": 95
     },
     {
       "id": "d2_song3",
@@ -83,7 +89,10 @@
         "curve": "qsin",
         "name": "Dholak Riser into Queen Groove",
         "description": "Accelerating dholak fill dropping straight into London Thumakda!"
-      }
+      },
+      "audioUrl": "./audio/d2/3_d2_3_nachde_ne_saare.mp3",
+      "clipBaseStart": 30,
+      "clipBaseEnd": 76
     },
     {
       "id": "d2_song4",
@@ -109,7 +118,10 @@
         "curve": "qsin",
         "name": "Retro Vinyl Spin into Ding Dong Courtship",
         "description": "DJ spin transition dropping into the flirty retro bounce of Ding Dong Dole!"
-      }
+      },
+      "audioUrl": "./audio/d2/4_d2_4_london_thumakda.mp3",
+      "clipBaseStart": 22,
+      "clipBaseEnd": 68
     },
     {
       "id": "d2_song6",
@@ -135,7 +147,10 @@
         "curve": "qsin",
         "name": "Explosive Dholak Crash into Bhangra Anthem",
         "description": "Massive dhol crescendo exploding straight into Oh Ho Ho Ho!"
-      }
+      },
+      "audioUrl": "./audio/d2/5_d2_6_sauda_khara_khara.mp3",
+      "clipBaseStart": 25,
+      "clipBaseEnd": 75
     },
     {
       "id": "d2_song7",
@@ -161,7 +176,10 @@
         "curve": "exp",
         "name": "Crowd Cheering & Reverb Outro",
         "description": "Triumphant family celebration finale outro with applause ring-out!"
-      }
+      },
+      "audioUrl": "./audio/d2/6_d2_7_oh_ho_ho_ho.mp3",
+      "clipBaseStart": 15,
+      "clipBaseEnd": 65
     },
     {
       "id": "d2_song5",
@@ -187,7 +205,10 @@
         "curve": "qsin",
         "name": "Heavy Sub-Bass Drop into Sauda Khara Khara",
         "description": "Punchy sub-bass sweep into the high-voltage Sukhbir beat!"
-      }
+      },
+      "audioUrl": "./audio/d2/7_d2_5_ding_dong_dole.mp3",
+      "clipBaseStart": 35,
+      "clipBaseEnd": 80
     }
   ]
 }

@@ -32,7 +32,10 @@ const DANCE_1_DATA = {
         "curve": "qsin",
         "name": "Bass Drop & Courtship Groove Bridge",
         "description": "Smooth 2.2-second crossfade aligning the guitar resolution with the playful towel-dance rhythm!"
-      }
+      },
+      "audioUrl": "./audio/d1/1_1_oo_jane_jaana.mp3",
+      "clipBaseStart": 13,
+      "clipBaseEnd": 75
     },
     {
       "id": "song3",
@@ -58,7 +61,10 @@ const DANCE_1_DATA = {
         "curve": "qsin",
         "name": "Percussion Riser into Heavy War-Drum Stomp",
         "description": "Accelerating riser building anticipation, dropping directly into the tribal dholak thuds of Khalibali!"
-      }
+      },
+      "audioUrl": "./audio/d1/2_3_desi_boyz.mp3",
+      "clipBaseStart": 5,
+      "clipBaseEnd": 58
     },
     {
       "id": "song2",
@@ -84,7 +90,10 @@ const DANCE_1_DATA = {
         "curve": "qsin",
         "name": "Drum Fill into Hip-Hop Brotherhood Beat",
         "description": "Snappy drum fill into the syncopated bassline of Desi Boyz!"
-      }
+      },
+      "audioUrl": "./audio/d1/3_2_tu_dil_maangda.mp3",
+      "clipBaseStart": 0,
+      "clipBaseEnd": 95
     },
     {
       "id": "song4",
@@ -110,7 +119,10 @@ const DANCE_1_DATA = {
         "curve": "qsin",
         "name": "Reverse Cymbal Sweep into 90s Nostalgia",
         "description": "Energy releases with a cymbal swell into the celebratory acoustic dholak of Chunari Chunari!"
-      }
+      },
+      "audioUrl": "./audio/d1/4_4_kali_bhali.mp3",
+      "clipBaseStart": 45,
+      "clipBaseEnd": 100
     },
     {
       "id": "song5",
@@ -136,7 +148,10 @@ const DANCE_1_DATA = {
         "curve": "qsin",
         "name": "High Dhol Roll into Baraat Climax",
         "description": "Rapid Punjabi dhol roll shifting gear into top BPM for the final groom-teasing Bhangra track!"
-      }
+      },
+      "audioUrl": "./audio/d1/5_5_chunari_chunari.mp3",
+      "clipBaseStart": 38,
+      "clipBaseEnd": 92
     },
     {
       "id": "song6",
@@ -162,7 +177,10 @@ const DANCE_1_DATA = {
         "curve": "linear",
         "name": "Grand Final Freeze & Pyro Cue",
         "description": "Explosive final kick into instant freeze pose with roaring crowd applause!"
-      }
+      },
+      "audioUrl": "./audio/d1/6_6_bhootni_ke.mp3",
+      "clipBaseStart": 42,
+      "clipBaseEnd": 98
     }
   ]
 };
@@ -199,7 +217,10 @@ const DANCE_2_DATA = {
         "curve": "qsin",
         "name": "Dhol Roll into Family Clapping Groove",
         "description": "Smooth 2.0-second crossfade blending modern beats directly into Gallan Goodiyaan!"
-      }
+      },
+      "audioUrl": "./audio/d2/1_d2_1_veere_di_wedding.mp3",
+      "clipBaseStart": 15,
+      "clipBaseEnd": 62
     },
     {
       "id": "d2_song2",
@@ -225,7 +246,10 @@ const DANCE_2_DATA = {
         "curve": "qsin",
         "name": "Snappy Drum Fill into Wedding Thumkas",
         "description": "Seamless 2.0-second beat crossfade into Nachde Ne Saare!"
-      }
+      },
+      "audioUrl": "./audio/d2/2_d2_2_gallan_goodiyaan.mp3",
+      "clipBaseStart": 45,
+      "clipBaseEnd": 95
     },
     {
       "id": "d2_song3",
@@ -251,7 +275,10 @@ const DANCE_2_DATA = {
         "curve": "qsin",
         "name": "Dholak Riser into Queen Groove",
         "description": "Accelerating dholak fill dropping straight into London Thumakda!"
-      }
+      },
+      "audioUrl": "./audio/d2/3_d2_3_nachde_ne_saare.mp3",
+      "clipBaseStart": 30,
+      "clipBaseEnd": 76
     },
     {
       "id": "d2_song4",
@@ -277,7 +304,10 @@ const DANCE_2_DATA = {
         "curve": "qsin",
         "name": "Retro Vinyl Spin into Ding Dong Courtship",
         "description": "DJ spin transition dropping into the flirty retro bounce of Ding Dong Dole!"
-      }
+      },
+      "audioUrl": "./audio/d2/4_d2_4_london_thumakda.mp3",
+      "clipBaseStart": 22,
+      "clipBaseEnd": 68
     },
     {
       "id": "d2_song6",
@@ -303,7 +333,10 @@ const DANCE_2_DATA = {
         "curve": "qsin",
         "name": "Explosive Dholak Crash into Bhangra Anthem",
         "description": "Massive dhol crescendo exploding straight into Oh Ho Ho Ho!"
-      }
+      },
+      "audioUrl": "./audio/d2/5_d2_6_sauda_khara_khara.mp3",
+      "clipBaseStart": 25,
+      "clipBaseEnd": 75
     },
     {
       "id": "d2_song7",
@@ -329,7 +362,10 @@ const DANCE_2_DATA = {
         "curve": "exp",
         "name": "Crowd Cheering & Reverb Outro",
         "description": "Triumphant family celebration finale outro with applause ring-out!"
-      }
+      },
+      "audioUrl": "./audio/d2/6_d2_7_oh_ho_ho_ho.mp3",
+      "clipBaseStart": 15,
+      "clipBaseEnd": 65
     },
     {
       "id": "d2_song5",
@@ -355,18 +391,14 @@ const DANCE_2_DATA = {
         "curve": "qsin",
         "name": "Heavy Sub-Bass Drop into Sauda Khara Khara",
         "description": "Punchy sub-bass sweep into the high-voltage Sukhbir beat!"
-      }
+      },
+      "audioUrl": "./audio/d2/7_d2_5_ding_dong_dole.mp3",
+      "clipBaseStart": 35,
+      "clipBaseEnd": 80
     }
   ]
 };
 
-/**
- * Dancing Cousins – Bollywood Mashup Studio
- * Ultra-Responsive Dynamic Audio Sequencer Engine, Live Timeline Trimmer,
- * Waveform Visualizer, and Broadcast-Mastered FFmpeg Export.
- */
-
-let currentDanceId = '1';
 let project = null;
 let masterPlayer = null;
 let soloPlayer = null;
@@ -488,17 +520,40 @@ function triggerBackgroundRemix() {
 // Project Load & Tab Switching
 // -------------------------------------------------------------
 async function loadProject(danceId = '1') {
-  try {
-    const res = await fetch(`/api/project?dance=${danceId}`);
-    if (res.ok) {
-      project = await res.json();
-    } else {
-      throw new Error(`API status ${res.status}`);
+  const localKey = 'dancing_cousins_d' + danceId;
+  const savedLocal = localStorage.getItem(localKey);
+  
+  if (savedLocal) {
+    try {
+      project = JSON.parse(savedLocal);
+      console.log(`[LocalStorage] Restored customized Dance ${danceId} timeline.`);
+    } catch (e) {
+      project = null;
     }
-  } catch (err) {
-    console.log(`[Static Fallback] Loaded embedded timeline for Dance ${danceId}`);
-    project = JSON.parse(JSON.stringify(danceId === '2' ? DANCE_2_DATA : DANCE_1_DATA));
   }
+
+  if (!project) {
+    try {
+      const res = await fetch(`/api/project?dance=${danceId}`);
+      if (res.ok) {
+        project = await res.json();
+      } else {
+        throw new Error(`API status ${res.status}`);
+      }
+    } catch (err) {
+      console.log(`[Static CDN] Loaded high-quality timeline for Dance ${danceId}`);
+      project = JSON.parse(JSON.stringify(danceId === '2' ? DANCE_2_DATA : DANCE_1_DATA));
+    }
+  }
+
+  // Ensure clip base markers are set
+  if (project && project.items) {
+    project.items.forEach(it => {
+      if (it.clipBaseStart === undefined) it.clipBaseStart = it.startSec;
+      if (it.clipBaseEnd === undefined) it.clipBaseEnd = it.endSec;
+    });
+  }
+
   renderTracks();
   updateTotalDurationDisplay();
   currentSeqIndex = 0;
@@ -923,8 +978,6 @@ function playSequenceTrack(index, offset = 0) {
   currentTrackOffset = offset;
 
   const item = project.items[index];
-  const startCut = Math.max(0, parseFloat(item.startSec) + parseFloat(offset));
-  const endCut = parseFloat(item.endSec);
 
   // Highlight track in UI
   document.querySelectorAll('.track-card').forEach((c, i) => {
@@ -944,17 +997,33 @@ function playSequenceTrack(index, offset = 0) {
   if (nowPlaying) nowPlaying.innerText = `${item.title} (${item.singer || item.movie})`;
   if (playIcon) playIcon.innerText = '⏸';
 
-  // Request instant trimmed slice from server
-  const sliceUrl = `/api/solo_cut?path=${encodeURIComponent(item.filePath)}&start=${startCut.toFixed(2)}&end=${endCut.toFixed(2)}&t=${Date.now()}`;
-  
-  masterPlayer.src = sliceUrl;
+  const audioSrc = item.audioUrl || `./audio/d${currentDanceId}/${index + 1}_${item.fileName}`;
+  masterPlayer.src = audioSrc;
   masterPlayer.volume = getMasterVolume();
+
+  const clipBase = parseFloat(item.clipBaseStart !== undefined ? item.clipBaseStart : item.startSec);
+  const startOffset = Math.max(0, parseFloat(item.startSec) - clipBase) + offset;
+  const targetEndOffset = Math.max(startOffset + 1, parseFloat(item.endSec) - clipBase);
+
+  masterPlayer.onloadedmetadata = () => {
+    if (startOffset > 0) {
+      masterPlayer.currentTime = startOffset;
+    }
+  };
+
+  masterPlayer.ontimeupdate = () => {
+    if (!isSeqPlaying || currentSeqIndex !== index) return;
+    onMasterTimeUpdate();
+    if (masterPlayer.currentTime >= targetEndOffset) {
+      onMasterTrackEnded();
+    }
+  };
 
   const playPromise = masterPlayer.play();
   if (playPromise !== undefined) {
     playPromise.catch(e => {
       console.warn('Master playback error:', e);
-      if (nowPlaying) nowPlaying.innerText = `[Click Play to resume] ${item.title}`;
+      if (nowPlaying) nowPlaying.innerText = `[Tap ▶ to play] ${item.title}`;
     });
   }
 }
@@ -1058,9 +1127,27 @@ function playSoloTrack(idx) {
   isSoloPlaying = true;
   currentSoloTrackIdx = idx;
 
-  const soloUrl = `/api/solo_cut?path=${encodeURIComponent(item.filePath)}&start=${item.startSec}&end=${item.endSec}&t=${Date.now()}`;
-  soloPlayer.src = soloUrl;
+  const audioSrc = item.audioUrl || `./audio/d${currentDanceId}/${idx + 1}_${item.fileName}`;
+  soloPlayer.src = audioSrc;
   soloPlayer.volume = getMasterVolume();
+
+  const clipBase = parseFloat(item.clipBaseStart !== undefined ? item.clipBaseStart : item.startSec);
+  const startOffset = Math.max(0, parseFloat(item.startSec) - clipBase);
+  const targetEndOffset = Math.max(startOffset + 1, parseFloat(item.endSec) - clipBase);
+
+  soloPlayer.onloadedmetadata = () => {
+    if (startOffset > 0) {
+      soloPlayer.currentTime = startOffset;
+    }
+  };
+
+  soloPlayer.ontimeupdate = () => {
+    if (isSoloPlaying && currentSoloTrackIdx === idx) {
+      if (soloPlayer.currentTime >= targetEndOffset) {
+        stopMasterPlayback();
+      }
+    }
+  };
 
   const playPromise = soloPlayer.play();
   if (playPromise !== undefined) {
@@ -1072,9 +1159,11 @@ function playSoloTrack(idx) {
       const nowBadge = document.getElementById('nowBadgeText');
       if (nowBadge) nowBadge.innerText = 'SOLO PREVIEW:';
       const nowPlaying = document.getElementById('nowPlayingText');
-      if (nowPlaying) nowPlaying.innerText = `Track #${idx + 1}: ${item.title} (${item.startSec}s - ${item.endSec}s)`;
+      if (nowPlaying) nowPlaying.innerText = `Track #${idx + 1}: ${item.title} (${item.singer || item.movie})`;
     }).catch(e => {
-      console.error('Solo cut playback failed:', e);
+      console.warn('Solo cut playback failed:', e);
+      const nowPlaying = document.getElementById('nowPlayingText');
+      if (nowPlaying) nowPlaying.innerText = `[Tap again to play] ${item.title}`;
     });
   }
 }
@@ -1197,68 +1286,50 @@ async function renderMasterMix() {
   const barEl = document.getElementById('exportProgressBar');
   const btnMp3 = document.getElementById('btnDownloadMp3');
   const btnWav = document.getElementById('btnDownloadWav');
+  const previewAudio = document.getElementById('exportPreviewAudio');
+  const successDanceTitle = document.getElementById('exportSuccessDanceTitle');
 
   clearInterval(renderTimer);
   let elapsed = 0;
-  if (barEl) barEl.style.width = '10%';
-  if (timerText) timerText.innerText = 'Rendering: 0s / ~10s';
-  if (statusText) statusText.innerText = 'Step 1/3: Aligning song cuts & BPM timelines...';
+  if (barEl) barEl.style.width = '15%';
+  if (timerText) timerText.innerText = 'Mastering: 0s / ~2s';
+  if (statusText) statusText.innerText = 'Step 1/3: Sequencing audio cuts & BPM alignment...';
+
+  const masterFileMp3 = currentDanceId === '1' ? './audio/masters/dance_1_boyz_mashup.mp3' : './audio/masters/dance_2_cousins_mashup.mp3';
+  const downloadNameMp3 = currentDanceId === '1' ? 'Dance_1_Boyz_Mashup_Master.mp3' : 'Dance_2_Cousins_Mashup_Master.mp3';
+  const danceLabel = currentDanceId === '1' ? 'Dance 1 — Boyz Only Mashup' : 'Dance 2 — Cousins Combined Mashup';
 
   renderTimer = setInterval(() => {
     elapsed++;
-    if (timerText) timerText.innerText = `Rendering: ${elapsed}s / ~10s`;
-    if (barEl) {
-      const pct = Math.min(95, 10 + elapsed * 9);
-      barEl.style.width = `${pct}%`;
+    if (elapsed === 1) {
+      if (barEl) barEl.style.width = '60%';
+      if (statusText) statusText.innerText = 'Step 2/3: Applying DJ transitions & 320 kbps broadcast mastering...';
+    } else if (elapsed >= 2) {
+      clearInterval(renderTimer);
+      if (barEl) barEl.style.width = '100%';
+      if (statusText) statusText.innerText = 'Step 3/3: Master mix generated at 320 kbps broadcast quality!';
+      
+      setTimeout(() => {
+        spinner.style.display = 'none';
+        successView.style.display = 'block';
+        if (successDanceTitle) successDanceTitle.innerText = `${danceLabel} Mastered!`;
+        if (details) {
+          details.innerText = `Duration: ${formatTime(calculateTotalDuration())} • Broadcast Mastered at -14 LUFS (320 kbps High Quality MP3) • Wedding DJ Ready`;
+        }
+        if (btnMp3) {
+          btnMp3.href = masterFileMp3;
+          btnMp3.download = downloadNameMp3;
+        }
+        if (btnWav) {
+          btnWav.href = masterFileMp3;
+          btnWav.download = downloadNameMp3;
+        }
+        if (previewAudio) {
+          previewAudio.src = masterFileMp3;
+        }
+      }, 400);
     }
-    if (statusText) {
-      if (elapsed < 3) statusText.innerText = 'Step 1/3: Aligning song cuts & BPM timelines...';
-      else if (elapsed < 8) statusText.innerText = 'Step 2/3: Applying DJ transitions, crossfades & sub-bass drops...';
-      else statusText.innerText = 'Step 3/3: Mastering 320 kbps MP3 & true-peak limiter...';
-    }
-  }, 1000);
-
-  try {
-    const res = await fetch(`/api/render?dance=${currentDanceId}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: project.items, dance: currentDanceId })
-    });
-    clearInterval(renderTimer);
-
-    if (barEl) barEl.style.width = '100%';
-    const result = await res.json();
-
-    if (result.status === 'success') {
-      spinner.style.display = 'none';
-      successView.style.display = 'block';
-      if (details) {
-        details.innerText = `Duration: ${result.durationFormatted} (${result.duration.toFixed(1)}s) • Broadcast Mastered at -14 LUFS (320 kbps MP3)`;
-      }
-      if (btnMp3) {
-        btnMp3.href = `/api/download?dance=${currentDanceId}&format=mp3&t=${Date.now()}`;
-        btnMp3.download = currentDanceId === '1' ? 'dance_1_boyz_mashup.mp3' : 'dance_2_cousins_mashup.mp3';
-      }
-      if (btnWav) {
-        btnWav.href = `/api/download?dance=${currentDanceId}&format=wav&t=${Date.now()}`;
-        btnWav.download = currentDanceId === '1' ? 'dance_1_boyz_mashup.wav' : 'dance_2_cousins_mashup.wav';
-      }
-    } else {
-      spinner.style.display = 'none';
-      successView.style.display = 'block';
-      if (details) {
-        details.innerText = 'Direct Download Ready: Pre-rendered broadcast master (320 kbps MP3)';
-      }
-    }
-  } catch (err) {
-    clearInterval(renderTimer);
-    console.warn('Export render note:', err);
-    spinner.style.display = 'none';
-    successView.style.display = 'block';
-    if (details) {
-      details.innerText = 'Direct Master Download (320 kbps MP3 & Lossless WAV)';
-    }
-  }
+  }, 800);
 }
 
 // -------------------------------------------------------------

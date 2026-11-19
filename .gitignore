@@ -4,10 +4,11 @@ __pycache__/
 *$py.class
 *.log
 
-# Scratch tests
-test_*.py
-test_*.html
-test_*.wav
-prepare_test.py
-run_eval.py
-render_both_dances.py
+# Heavy raw audio caches (not needed for deployment)
+audio_inputs/
+output/
+sfx/
+*.wav
+
+# Scratch & helper scripts
+*.py

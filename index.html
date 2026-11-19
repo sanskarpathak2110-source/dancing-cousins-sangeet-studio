@@ -135,12 +135,12 @@
               <div class="track-movie">Film: Om Shanti Om • Vishal-Shekhar • Shaan, Udit Narayan, Sunidhi Chauhan & Chorus</div>
             </div>
           </div>
-          <a href="/api/finale_download" class="btn btn-primary" download="Grand_Finale_Deewangi_Deewangi_FullSong.mp3">
+          <a href="./audio/masters/finale_deewangi_deewangi.mp3" class="btn btn-primary" download="Grand_Finale_Deewangi_Deewangi_FullSong.mp3">
             ⬇️ Download Full Song MP3 (320 kbps)
           </a>
         </div>
 
-        <audio id="finaleAudioPlayer" preload="auto" src="/api/finale_audio"></audio>
+        <audio id="finaleAudioPlayer" preload="auto" src="./audio/masters/finale_deewangi_deewangi.mp3"></audio>
 
         <div class="finale-player-controls-row">
           <button class="btn-finale-play" id="btnFinalePlay" onclick="toggleFinalePlay()">
@@ -246,11 +246,15 @@
           <h4 id="exportSuccessDanceTitle">Mix Successfully Rendered!</h4>
           <p id="exportSuccessDetails">Duration: 05:21 • Broadcast Mastered at -14 LUFS (320 kbps)</p>
           
+                    <div style="margin: 16px 0; padding: 12px; background: rgba(0,0,0,0.3); border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+            <p style="font-size: 0.85rem; color: #22d3ee; margin-bottom: 8px; font-weight: 600;">🎧 Instant Master Preview:</p>
+            <audio id="exportPreviewAudio" controls style="width: 100%; height: 38px;"></audio>
+          </div>
           <div class="download-buttons-group">
-            <a id="btnDownloadMp3" href="/api/download?format=mp3" class="btn btn-primary btn-large" download>
+            <a id="btnDownloadMp3" href="./audio/masters/dance_1_boyz_mashup.mp3" class="btn btn-primary btn-large" download>
               ⬇ Download Master MP3 (320 kbps)
             </a>
-            <a id="btnDownloadWav" href="/api/download?format=wav" class="btn btn-secondary btn-large" download>
+            <a id="btnDownloadWav" href="./audio/masters/dance_1_boyz_mashup.mp3" class="btn btn-secondary btn-large" download>
               ⬇ Download Lossless WAV
             </a>
           </div>

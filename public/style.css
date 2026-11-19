@@ -1277,4 +1277,25 @@ body.dark-theme {
   .entry-phases-grid {
     grid-template-columns: 1fr;
   }
+
+  .now-playing-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .now-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 58vw;
+  }
+
+  /* Snappy mobile tap feel */
+  button, a, .btn, .btn-icon-sm, .btn-transport, .nav-tab-btn {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
 }
+

@@ -31,7 +31,10 @@
         "curve": "qsin",
         "name": "Bass Drop & Courtship Groove Bridge",
         "description": "Smooth 2.2-second crossfade aligning the guitar resolution with the playful towel-dance rhythm!"
-      }
+      },
+      "audioUrl": "./audio/d1/1_1_oo_jane_jaana.mp3",
+      "clipBaseStart": 13,
+      "clipBaseEnd": 75
     },
     {
       "id": "song3",
@@ -57,7 +60,10 @@
         "curve": "qsin",
         "name": "Percussion Riser into Heavy War-Drum Stomp",
         "description": "Accelerating riser building anticipation, dropping directly into the tribal dholak thuds of Khalibali!"
-      }
+      },
+      "audioUrl": "./audio/d1/2_3_desi_boyz.mp3",
+      "clipBaseStart": 5,
+      "clipBaseEnd": 58
     },
     {
       "id": "song2",
@@ -83,7 +89,10 @@
         "curve": "qsin",
         "name": "Drum Fill into Hip-Hop Brotherhood Beat",
         "description": "Snappy drum fill into the syncopated bassline of Desi Boyz!"
-      }
+      },
+      "audioUrl": "./audio/d1/3_2_tu_dil_maangda.mp3",
+      "clipBaseStart": 0,
+      "clipBaseEnd": 95
     },
     {
       "id": "song4",
@@ -109,7 +118,10 @@
         "curve": "qsin",
         "name": "Reverse Cymbal Sweep into 90s Nostalgia",
         "description": "Energy releases with a cymbal swell into the celebratory acoustic dholak of Chunari Chunari!"
-      }
+      },
+      "audioUrl": "./audio/d1/4_4_kali_bhali.mp3",
+      "clipBaseStart": 45,
+      "clipBaseEnd": 100
     },
     {
       "id": "song5",
@@ -135,7 +147,10 @@
         "curve": "qsin",
         "name": "High Dhol Roll into Baraat Climax",
         "description": "Rapid Punjabi dhol roll shifting gear into top BPM for the final groom-teasing Bhangra track!"
-      }
+      },
+      "audioUrl": "./audio/d1/5_5_chunari_chunari.mp3",
+      "clipBaseStart": 38,
+      "clipBaseEnd": 92
     },
     {
       "id": "song6",
@@ -161,7 +176,10 @@
         "curve": "linear",
         "name": "Grand Final Freeze & Pyro Cue",
         "description": "Explosive final kick into instant freeze pose with roaring crowd applause!"
-      }
+      },
+      "audioUrl": "./audio/d1/6_6_bhootni_ke.mp3",
+      "clipBaseStart": 42,
+      "clipBaseEnd": 98
     }
   ]
 }
