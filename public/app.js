@@ -1,3 +1,365 @@
+// Pre-embedded project data for zero-latency Vercel static deployment
+const DANCE_1_DATA = {
+  "projectName": "DANCE NUMBER 1 \u2013 BOYZ ONLY",
+  "occasion": "Brother's Wedding Sangeet (Prince Bhaiya)",
+  "performance": "Boys-Only Bollywood Group Dance",
+  "targetDurationSec": 330,
+  "targetDurationFormatted": "05:30",
+  "maxDurationSec": 360,
+  "created": "2026-11-20",
+  "items": [
+    {
+      "id": "song1",
+      "order": 1,
+      "title": "Oo Jane Jaana",
+      "movie": "Pyaar Kiya To Darna Kya",
+      "singer": "Kamaal Khan (Salman Khan Entry)",
+      "fileName": "1_oo_jane_jaana.mp3",
+      "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\1_oo_jane_jaana.mp3",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Oo+Jane+Jaana+original+song",
+      "startSec": 13,
+      "endSec": 75,
+      "durationSec": 55,
+      "originalBpm": 106,
+      "targetBpm": 106,
+      "key": "G Major",
+      "volumeDb": 0,
+      "phase": "PHASE 1: Attention-Grabbing Swag Opening",
+      "danceCues": "Salman Khan shirtless swag entry, air-guitar strumming, chest bounce hook step. High sing-along factor.",
+      "transitionOut": {
+        "type": "dhol_drop",
+        "duration": 2.2,
+        "curve": "qsin",
+        "name": "Bass Drop & Courtship Groove Bridge",
+        "description": "Smooth 2.2-second crossfade aligning the guitar resolution with the playful towel-dance rhythm!"
+      }
+    },
+    {
+      "id": "song3",
+      "order": 2,
+      "title": "Make Some Noise For The Desi Boyz",
+      "movie": "Desi Boyz",
+      "singer": "KK & Bob (Pritam)",
+      "fileName": "3_desi_boyz.mp3",
+      "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\3_desi_boyz.mp3",
+      "youtubeUrl": "https://www.youtube.com/watch?v=xq84UA3eCV8",
+      "startSec": 5,
+      "endSec": 58,
+      "durationSec": 53,
+      "originalBpm": 128,
+      "targetBpm": 128,
+      "key": "F# Minor",
+      "volumeDb": 0.5,
+      "phase": "PHASE 2: Playful Bollywood Courtship & Boyz Groove",
+      "danceCues": "Pure brotherhood swag, fist-in-the-air synchronized beat drops, head nods, center spotlight rotation.",
+      "transitionOut": {
+        "type": "riser_drop",
+        "duration": 2.2,
+        "curve": "qsin",
+        "name": "Percussion Riser into Heavy War-Drum Stomp",
+        "description": "Accelerating riser building anticipation, dropping directly into the tribal dholak thuds of Khalibali!"
+      }
+    },
+    {
+      "id": "song2",
+      "order": 3,
+      "title": "Tu Dil Maangda Hai Dildaar Sohniye",
+      "movie": "Mujhse Shaadi Karogi (Aaja Soniye)",
+      "singer": "Sonu Nigam & Alka Yagnik",
+      "fileName": "2_tu_dil_maangda.mp3",
+      "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\2_tu_dil_maangda.mp3",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Tu+Dil+Maangda+Hai+Dildaar+Sohniye",
+      "startSec": 0,
+      "endSec": 95,
+      "durationSec": 55,
+      "originalBpm": 104,
+      "targetBpm": 104,
+      "key": "E Minor",
+      "volumeDb": 0,
+      "phase": "PHASE 2: Playful Bollywood Courtship & Boyz Groove",
+      "danceCues": "Towel dance groove, playful courtship gestures, boys teasing each other across parallel lines.",
+      "transitionOut": {
+        "type": "drum_fill",
+        "duration": 2,
+        "curve": "qsin",
+        "name": "Drum Fill into Hip-Hop Brotherhood Beat",
+        "description": "Snappy drum fill into the syncopated bassline of Desi Boyz!"
+      }
+    },
+    {
+      "id": "song4",
+      "order": 4,
+      "title": "Kali Bhali",
+      "movie": "Padmaavat (Khalibali)",
+      "singer": "Shivam Pathak (Ranveer Singh Energy)",
+      "fileName": "4_kali_bhali.mp3",
+      "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\4_kali_bhali.mp3",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Kali+Bhali+song",
+      "startSec": 45,
+      "endSec": 100,
+      "durationSec": 55,
+      "originalBpm": 130,
+      "targetBpm": 130,
+      "key": "D Minor",
+      "volumeDb": -0.5,
+      "phase": "PHASE 3: High-Energy Desi Dance & Stomping Power",
+      "danceCues": "Wild aggressive foot stomping, contagious Ranveer Singh shoulder shakes, expanding circle formation.",
+      "transitionOut": {
+        "type": "cymbal_sweep",
+        "duration": 2,
+        "curve": "qsin",
+        "name": "Reverse Cymbal Sweep into 90s Nostalgia",
+        "description": "Energy releases with a cymbal swell into the celebratory acoustic dholak of Chunari Chunari!"
+      }
+    },
+    {
+      "id": "song5",
+      "order": 5,
+      "title": "Chunari Chunari",
+      "movie": "Biwi No. 1",
+      "singer": "Abhijeet & Anuradha Sriram",
+      "fileName": "5_chunari_chunari.mp3",
+      "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\5_chunari_chunari.mp3",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Chunari+Chunari+original+song",
+      "startSec": 38,
+      "endSec": 92,
+      "durationSec": 54,
+      "originalBpm": 122,
+      "targetBpm": 122,
+      "key": "A Minor",
+      "volumeDb": 0,
+      "phase": "PHASE 3: High-Energy Desi Dance & Stomping Power",
+      "danceCues": "Mischievous 90s Salman comedy thumkas, dupatta wave gestures, teasing the audience in a wide horizontal row.",
+      "transitionOut": {
+        "type": "bhangra_roll",
+        "duration": 2.2,
+        "curve": "qsin",
+        "name": "High Dhol Roll into Baraat Climax",
+        "description": "Rapid Punjabi dhol roll shifting gear into top BPM for the final groom-teasing Bhangra track!"
+      }
+    },
+    {
+      "id": "song6",
+      "order": 6,
+      "title": "Bhootni Ke",
+      "movie": "Singh Is Kinng",
+      "singer": "Daler Mehndi (Akshay Kumar)",
+      "fileName": "6_bhootni_ke.mp3",
+      "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\6_bhootni_ke.mp3",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Bhootni+Ke+original+song",
+      "startSec": 42,
+      "endSec": 98,
+      "durationSec": 56,
+      "originalBpm": 132,
+      "targetBpm": 132,
+      "key": "C# Minor / Db Major",
+      "volumeDb": 0,
+      "phase": "PHASE 4: Massive Groom-Teasing Bhangra Climax",
+      "danceCues": "Surround Prince Bhaiya, high-energy Bhangra bounce kicks, mocking gestures, ending in dramatic freeze pose!",
+      "transitionOut": {
+        "type": "grand_finale",
+        "duration": 0,
+        "curve": "linear",
+        "name": "Grand Final Freeze & Pyro Cue",
+        "description": "Explosive final kick into instant freeze pose with roaring crowd applause!"
+      }
+    }
+  ]
+};
+const DANCE_2_DATA = {
+  "projectName": "DANCE NUMBER 2 \u2013 COUSINS COMBINED",
+  "occasion": "Brother's Wedding Sangeet (Prince Bhaiya)",
+  "performance": "Cousins Combined Bollywood Family Dance",
+  "targetDurationSec": 330,
+  "targetDurationFormatted": "05:30",
+  "maxDurationSec": 360,
+  "created": "2026-11-20",
+  "items": [
+    {
+      "id": "d2_song1",
+      "order": 1,
+      "title": "Veerey Di Wedding",
+      "movie": "Entertainment",
+      "singer": "Mika Singh (Akshay Kumar)",
+      "fileName": "d2_1_veere_di_wedding.mp3",
+      "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\d2_1_veere_di_wedding.mp3",
+      "youtubeUrl": "https://www.youtube.com/watch?v=f92Pa3DWsaw",
+      "startSec": 15,
+      "endSec": 62,
+      "durationSec": 47,
+      "originalBpm": 130,
+      "targetBpm": 130,
+      "key": "A Minor",
+      "volumeDb": 0.5,
+      "phase": "PHASE 1: High-Octane Punjabi Wedding Entry",
+      "danceCues": "High-energy Punjabi wedding swag! Arms pumping, shoulder shrugs, brothers and cousins celebrating Prince Bhaiya's wedding!",
+      "transitionOut": {
+        "type": "dhol_drop",
+        "duration": 2,
+        "curve": "qsin",
+        "name": "Dhol Roll into Family Clapping Groove",
+        "description": "Smooth 2.0-second crossfade blending modern beats directly into Gallan Goodiyaan!"
+      }
+    },
+    {
+      "id": "d2_song2",
+      "order": 2,
+      "title": "Gallan Goodiyaan",
+      "movie": "Dil Dhadakne Do",
+      "singer": "Farhan Akhtar, Shankar Mahadevan, Sukhwinder Singh",
+      "fileName": "d2_2_gallan_goodiyaan.mp3",
+      "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\d2_2_gallan_goodiyaan.mp3",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Gallan+Goodiyaan+official+song",
+      "startSec": 45,
+      "endSec": 95,
+      "durationSec": 50,
+      "originalBpm": 128,
+      "targetBpm": 128,
+      "key": "D Major",
+      "volumeDb": 0,
+      "phase": "PHASE 2: Joyful Family Clapping & Circle Formations",
+      "danceCues": "Irresistible synchronized clapping, cousin circle formations, rotating partner spins.",
+      "transitionOut": {
+        "type": "drum_fill",
+        "duration": 2,
+        "curve": "qsin",
+        "name": "Snappy Drum Fill into Wedding Thumkas",
+        "description": "Seamless 2.0-second beat crossfade into Nachde Ne Saare!"
+      }
+    },
+    {
+      "id": "d2_song3",
+      "order": 3,
+      "title": "Nachde Ne Saare",
+      "movie": "Baar Baar Dekho",
+      "singer": "Jasleen Royal, Harshdeep Kaur, Siddharth Mahadevan",
+      "fileName": "d2_3_nachde_ne_saare.mp3",
+      "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\d2_3_nachde_ne_saare.mp3",
+      "youtubeUrl": "https://youtu.be/HgIW7P4dsXU",
+      "startSec": 30,
+      "endSec": 76,
+      "durationSec": 46,
+      "originalBpm": 124,
+      "targetBpm": 124,
+      "key": "F# Minor",
+      "volumeDb": 0.5,
+      "phase": "PHASE 2: Joyful Family Clapping & Circle Formations",
+      "danceCues": "Signature wedding thumka hook step, girls on front row, playful boys teasing from behind.",
+      "transitionOut": {
+        "type": "riser_drop",
+        "duration": 2,
+        "curve": "qsin",
+        "name": "Dholak Riser into Queen Groove",
+        "description": "Accelerating dholak fill dropping straight into London Thumakda!"
+      }
+    },
+    {
+      "id": "d2_song4",
+      "order": 4,
+      "title": "London Thumakda",
+      "movie": "Queen",
+      "singer": "Labh Janjua, Sonu Kakkar, Neha Kakkar",
+      "fileName": "d2_4_london_thumakda.mp3",
+      "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\d2_4_london_thumakda.mp3",
+      "youtubeUrl": "https://youtu.be/udra3Mfw2oo",
+      "startSec": 22,
+      "endSec": 68,
+      "durationSec": 46,
+      "originalBpm": 130,
+      "targetBpm": 130,
+      "key": "B Minor",
+      "volumeDb": 0,
+      "phase": "PHASE 3: High-Energy Punjabi Dholak & Partner Grooves",
+      "danceCues": "Bouncing dholak steps, Monti & Goldy Bhaiya with Bhabhis partner groove, hip shakes.",
+      "transitionOut": {
+        "type": "scratch_drop",
+        "duration": 2,
+        "curve": "qsin",
+        "name": "Retro Vinyl Spin into Ding Dong Courtship",
+        "description": "DJ spin transition dropping into the flirty retro bounce of Ding Dong Dole!"
+      }
+    },
+    {
+      "id": "d2_song6",
+      "order": 5,
+      "title": "Sauda Khara Khara",
+      "movie": "Good Newwz",
+      "singer": "Diljit Dosanjh, Sukhbir, Dhvani Bhanushali",
+      "fileName": "d2_6_sauda_khara_khara.mp3",
+      "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\d2_6_sauda_khara_khara.mp3",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Sauda+Khara+Khara+Good+Newwz+official",
+      "startSec": 25,
+      "endSec": 75,
+      "durationSec": 50,
+      "originalBpm": 130,
+      "targetBpm": 130,
+      "key": "F Minor",
+      "volumeDb": 0,
+      "phase": "PHASE 4: Grand High-Voltage All-Family Climax",
+      "danceCues": "Prince Bhaiya & Bhabhi center stage couple spotlight, shoulder shrugs, all cousins cheering around.",
+      "transitionOut": {
+        "type": "dhol_drop",
+        "duration": 2,
+        "curve": "qsin",
+        "name": "Explosive Dholak Crash into Bhangra Anthem",
+        "description": "Massive dhol crescendo exploding straight into Oh Ho Ho Ho!"
+      }
+    },
+    {
+      "id": "d2_song7",
+      "order": 6,
+      "title": "Oh Ho Ho Ho \u2013 Ishq Tera Tadpave",
+      "movie": "Hindi Medium / Sukhbir Original",
+      "singer": "Sukhbir & Ikka",
+      "fileName": "d2_7_oh_ho_ho_ho.mp3",
+      "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\d2_7_oh_ho_ho_ho.mp3",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Oh+Ho+Ho+Ho+Ishq+Tera+Tadpave+original",
+      "startSec": 15,
+      "endSec": 65,
+      "durationSec": 50,
+      "originalBpm": 136,
+      "targetBpm": 136,
+      "key": "B Minor",
+      "volumeDb": 0.5,
+      "phase": "PHASE 4: Grand High-Voltage All-Family Climax",
+      "danceCues": "Total family eruption! Pure Punjabi bhangra, hands in the air, jumping together on every Taare Gin Gin beat!",
+      "transitionOut": {
+        "type": "reverb_fade",
+        "duration": 2.5,
+        "curve": "exp",
+        "name": "Crowd Cheering & Reverb Outro",
+        "description": "Triumphant family celebration finale outro with applause ring-out!"
+      }
+    },
+    {
+      "id": "d2_song5",
+      "order": 7,
+      "title": "Ding Dong Dole",
+      "movie": "Kucch To Hai",
+      "singer": "KK & Sunidhi Chauhan",
+      "fileName": "d2_5_ding_dong_dole.mp3",
+      "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\d2_5_ding_dong_dole.mp3",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Ding+Dong+Dole+original+song",
+      "startSec": 35,
+      "endSec": 80,
+      "durationSec": 45,
+      "originalBpm": 126,
+      "targetBpm": 126,
+      "key": "A Minor",
+      "volumeDb": 0,
+      "phase": "PHASE 3: High-Energy Punjabi Dholak & Partner Grooves",
+      "danceCues": "Playful partner courtship, Priya Didi & Ankush Jeejaji spotlight, finger snap swaying.",
+      "transitionOut": {
+        "type": "bass_drop",
+        "duration": 2,
+        "curve": "qsin",
+        "name": "Heavy Sub-Bass Drop into Sauda Khara Khara",
+        "description": "Punchy sub-bass sweep into the high-voltage Sukhbir beat!"
+      }
+    }
+  ]
+};
+
 /**
  * Dancing Cousins – Bollywood Mashup Studio
  * Ultra-Responsive Dynamic Audio Sequencer Engine, Live Timeline Trimmer,
@@ -128,13 +490,18 @@ function triggerBackgroundRemix() {
 async function loadProject(danceId = '1') {
   try {
     const res = await fetch(`/api/project?dance=${danceId}`);
-    project = await res.json();
-    renderTracks();
-    updateTotalDurationDisplay();
-    currentSeqIndex = 0;
+    if (res.ok) {
+      project = await res.json();
+    } else {
+      throw new Error(`API status ${res.status}`);
+    }
   } catch (err) {
-    console.error('Error loading project:', err);
+    console.log(`[Static Fallback] Loaded embedded timeline for Dance ${danceId}`);
+    project = JSON.parse(JSON.stringify(danceId === '2' ? DANCE_2_DATA : DANCE_1_DATA));
   }
+  renderTracks();
+  updateTotalDurationDisplay();
+  currentSeqIndex = 0;
 }
 
 async function saveProject() {

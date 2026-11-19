@@ -66,20 +66,20 @@ class MashupStudioHandler(BaseHTTPRequestHandler):
             self.serve_file(os.path.join(PUBLIC_DIR, "index.html"), "text/html; charset=utf-8")
             return
 
-        # 2. Static public assets
-        if path.startswith("/public/"):
-            rel_path = path[len("/public/"):]
-            local_path = os.path.join(PUBLIC_DIR, rel_path)
-            if os.path.exists(local_path):
-                ext = os.path.splitext(local_path)[1].lower()
-                mime = "text/plain"
-                if ext == ".css": mime = "text/css"
-                elif ext == ".js": mime = "application/javascript"
-                elif ext == ".json": mime = "application/json"
-                elif ext in (".png", ".jpg", ".jpeg"): mime = f"image/{ext[1:]}"
-                elif ext == ".svg": mime = "image/svg+xml"
-                self.serve_file(local_path, mime)
-                return
+        # 2. Static public assets (serves /public/file or /file directly)
+        rel_path = path[len("/public/"):] if path.startswith("/public/") else path.lstrip("/")
+        local_path = os.path.join(PUBLIC_DIR, rel_path)
+        if os.path.exists(local_path) and os.path.isfile(local_path):
+            ext = os.path.splitext(local_path)[1].lower()
+            mime = "text/plain"
+            if ext == ".css": mime = "text/css"
+            elif ext == ".js": mime = "application/javascript"
+            elif ext == ".json": mime = "application/json"
+            elif ext == ".pdf": mime = "application/pdf"
+            elif ext in (".png", ".jpg", ".jpeg"): mime = f"image/{ext[1:]}"
+            elif ext == ".svg": mime = "image/svg+xml"
+            self.serve_file(local_path, mime)
+            return
 
         # 3. Project Configuration API (Dance 1 or Dance 2)
         if path == "/api/project":

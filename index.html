@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#101520">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Dancing Cousins – Bollywood Mashup Studio</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+  <!-- Top Master Bar -->
+  <header class="studio-header">
+    <div class="header-branding">
+      <div class="dj-logo-badge">
+        <span class="logo-disc">💿</span>
+        <div class="logo-text">
+          <h1>DANCING COUSINS</h1>
+          <span class="subhead" id="headerSubhead">Bollywood Mashup Studio • Dance 1 (Boyz Only)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Duration Monitor -->
+    <div class="duration-monitor-card" id="durationMonitorCard">
+      <div class="dur-label">TOTAL DURATION</div>
+      <div class="dur-clock" id="totalDurationClock">05:17</div>
+      <div class="dur-target-bar">
+        <div class="target-marker" id="durTargetMarker" style="left: 91.6%;" title="Target: 5m 30s"></div>
+        <div class="dur-progress-fill" id="durProgressFill" style="width: 90%;"></div>
+      </div>
+      <div class="dur-meta">
+        <span class="target-text">Target: <strong>05:30</strong></span>
+        <span class="max-text">Max: <strong>06:00</strong></span>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="header-actions">
+      <button class="btn btn-secondary" id="btnSaveProject" onclick="saveProject()" title="Save timeline configuration to JSON">
+        <span class="btn-icon">💾</span> Save Plan
+      </button>
+      <button class="btn btn-primary" id="btnReMix" onclick="reMixAndPlay()" title="Re-mix mashup with latest trims and play immediately">
+        <span class="btn-icon">🎛️</span> Re-Mix & Play
+      </button>
+      <button class="btn btn-primary" id="btnRenderMix" onclick="openExportModal()" title="Export final master MP3 & WAV with FFmpeg">
+        <span class="btn-icon">⚡</span> Export Mix (MP3 / WAV)
+      </button>
+      <a href="./Dancing_Cousins.pdf" target="_blank" class="btn btn-outline" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+        <span>👑</span> Planner & PDF ↗
+      </a>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs (Dance 1, Dance 2, Grand Finale) -->
+  <nav class="studio-nav-tabs">
+    <button class="nav-tab-btn active" id="tabDance1" onclick="switchDanceTab('1')">
+      🕺 Dance 1 — Boyz Only <span class="tab-badge" id="tabBadge1">6 Songs</span>
+    </button>
+    <button class="nav-tab-btn" id="tabDance2" onclick="switchDanceTab('2')">
+      💃 Dance 2 — Cousins Combined <span class="tab-badge" id="tabBadge2">7 Songs</span>
+    </button>
+    <button class="nav-tab-btn" id="tabFinale" onclick="switchDanceTab('finale')">
+      🎆 Grand Finale — Deewangi Deewangi <span class="tab-badge" id="tabBadgeFinale">Full Song (8m 57s)</span>
+    </button>
+  </nav>
+
+  <!-- Master Transport Bar (for Dance 1 & Dance 2) -->
+  <section class="master-transport-bar" id="masterTransportBar">
+    <div class="transport-controls">
+      <button class="btn-transport" id="btnMasterPlay" onclick="toggleMasterPlay()" title="Play Full Mashup in Current Order">
+        <span class="play-icon" id="masterPlayIcon">▶</span>
+      </button>
+      <button class="btn-transport btn-transport-stop" id="btnMasterStop" onclick="stopMasterPlayback()" title="Stop Playback">
+        <span>⏹</span>
+      </button>
+      <!-- Dedicated Audio Players for Instant Mashup & Solo Previews -->
+      <audio id="masterAudioPlayer" preload="auto"></audio>
+      <audio id="soloAudioPlayer" preload="none"></audio>
+    </div>
+
+    <div class="transport-scrub-area">
+      <div class="now-playing-strip">
+        <span class="now-badge" id="nowBadgeText">CURRENT TRACK:</span>
+        <span class="now-title" id="nowPlayingText">Click Play (▶) to preview mashup sequence</span>
+        <span class="now-time" id="playbackTimeText">00:00 / 05:17</span>
+      </div>
+      <div class="timeline-scrubber-track" id="masterScrubberTrack" title="Click anywhere to seek">
+        <div class="timeline-ruler" id="timelineRuler"></div>
+        <div class="timeline-playhead" id="masterPlayhead"></div>
+      </div>
+    </div>
+
+    <div class="transport-meta">
+      <div class="master-vol-group">
+        <span class="vol-icon">🔊</span>
+        <input type="range" id="masterVolumeSlider" min="0" max="100" value="85" title="Master Volume">
+      </div>
+      <div class="vu-meter">
+        <div class="vu-bar" id="vuBarLeft"></div>
+        <div class="vu-bar" id="vuBarRight"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Workstation Layout (Full Width, No Sidebar Clutter) -->
+  <main class="studio-workstation" id="workstationLayout">
+    <!-- Center Timeline Tracks Container (Full Width) -->
+    <section class="tracks-timeline-container" id="tracksContainer">
+      <!-- Tracks populated dynamically via app.js -->
+    </section>
+  </main>
+
+  <!-- Dedicated Grand Finale Showcase View (Deewangi Deewangi Full Song) -->
+  <section class="finale-showcase-view" id="finaleSection" style="display:none;">
+    <div class="finale-hero-card">
+      <div class="finale-hero-badge">🎆 SHOWSTOPPER CLIMAX • ALL FAMILY CELEBRATION</div>
+      <h2 class="finale-hero-title">Grand Finale — Deewangi Deewangi (Om Shanti Om)</h2>
+      <p class="finale-hero-subtitle">
+        The complete, unedited 8-minute 57-second Bollywood anthem recreating the legendary 31-star red carpet arrival sequence!
+        Everyone — groomsmen, cousins, couples, parents, aunts, uncles and friends — join in progressive waves of star entries.
+      </p>
+
+      <!-- Luxury Embedded Player for Grand Finale Full Song -->
+      <div class="finale-audio-player-box">
+        <div class="finale-player-top">
+          <div class="finale-track-info">
+            <span class="disc-icon">💿</span>
+            <div>
+              <div class="track-name">Deewangi Deewangi (Full Original Recording)</div>
+              <div class="track-movie">Film: Om Shanti Om • Vishal-Shekhar • Shaan, Udit Narayan, Sunidhi Chauhan & Chorus</div>
+            </div>
+          </div>
+          <a href="/api/finale_download" class="btn btn-primary" download="Grand_Finale_Deewangi_Deewangi_FullSong.mp3">
+            ⬇️ Download Full Song MP3 (320 kbps)
+          </a>
+        </div>
+
+        <audio id="finaleAudioPlayer" preload="auto" src="/api/finale_audio"></audio>
+
+        <div class="finale-player-controls-row">
+          <button class="btn-finale-play" id="btnFinalePlay" onclick="toggleFinalePlay()">
+            <span id="finalePlayIcon">▶</span>
+          </button>
+          
+          <div class="finale-scrub-container">
+            <div class="finale-scrub-bar" id="finaleScrubBar" onclick="seekFinaleAudio(event)">
+              <div class="finale-scrub-fill" id="finaleScrubFill"></div>
+            </div>
+            <div class="finale-time-row">
+              <span id="finaleCurrentTime">00:00</span>
+              <span id="finaleTotalTime">08:57</span>
+            </div>
+          </div>
+
+          <div class="finale-vol-group">
+            <span>🔊</span>
+            <input type="range" id="finaleVolSlider" min="0" max="100" value="90" oninput="setFinaleVolume(this.value)">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7-Phase Entry & Choreography Blueprint -->
+    <div class="finale-entry-guide-container">
+      <div class="entry-guide-header">
+        <h3>🌟 The 7-Phase Red Carpet Entry Blueprint</h3>
+        <p>Follow the legendary Shah Rukh Khan host concept: start with a duo, then introduce family members couple-by-couple!</p>
+      </div>
+
+      <div class="entry-phases-grid">
+        <div class="entry-phase-card">
+          <div class="entry-time-pill">00:00 – 01:15 • Phase 1</div>
+          <h4>The Opening Anchors Entry</h4>
+          <p class="entry-dancers"><strong>Dancers:</strong> Nishu & Yashu</p>
+          <p class="entry-steps">Energy-setting entrance with high footwork. Recreates the opening host beat of Om Shanti Om to bring all audience attention to the dance floor!</p>
+        </div>
+
+        <div class="entry-phase-card">
+          <div class="entry-time-pill">01:15 – 02:40 • Phase 2</div>
+          <h4>Senior Squad & Bhabhis Arrival</h4>
+          <p class="entry-dancers"><strong>Dancers:</strong> Monti Bhaiya & Bhabhi, Goldy Bhaiya & Bhabhi</p>
+          <p class="entry-steps">Graceful couple spin and signature hand wave. They enter from opposite sides, meeting center stage with synchronized dupatta spins.</p>
+        </div>
+
+        <div class="entry-phase-card">
+          <div class="entry-time-pill">02:40 – 04:00 • Phase 3</div>
+          <h4>The Romantic Spotlight Entry</h4>
+          <p class="entry-dancers"><strong>Dancers:</strong> Priya Didi & Ankush Jeejaji</p>
+          <p class="entry-steps">Delicate Bollywood partner twirl and signature Namaste bow, met with massive cheers from the family!</p>
+        </div>
+
+        <div class="entry-phase-card">
+          <div class="entry-time-pill">04:00 – 05:25 • Phase 4</div>
+          <h4>All-Cousins Squad Stomp</h4>
+          <p class="entry-dancers"><strong>Dancers:</strong> Priyanshu & All Youth Cousins Squad</p>
+          <p class="entry-steps">Explosive group charge onto the floor, shoulder bouncing and high-five lines forming a corridor for the groom!</p>
+        </div>
+
+        <div class="entry-phase-card highlight-card">
+          <div class="entry-time-pill" style="background:#f59e0b; color:#000;">05:25 – 06:45 • Phase 5</div>
+          <h4>👑 Royal Bride & Groom Entrance</h4>
+          <p class="entry-dancers"><strong>Dancers:</strong> Prince Bhaiya & Bhabhi (Center Spotlight)</p>
+          <p class="entry-steps">The Grand Royalty Entry! The full family parts to the sides as Prince Bhaiya and Bhabhi take the center stage for the iconic Shah Rukh Khan open-arms hook step!</p>
+        </div>
+
+        <div class="entry-phase-card">
+          <div class="entry-time-pill">06:45 – 07:55 • Phase 6</div>
+          <h4>Family Mass Celebration Wave</h4>
+          <p class="entry-dancers"><strong>Dancers:</strong> Parents, Chachas, Mamas, Maasis, Relatives & Guests</p>
+          <p class="entry-steps">No choreography required! Everyone steps into the circle, swaying hands in the air and singing along to the mega-chorus.</p>
+        </div>
+
+        <div class="entry-phase-card">
+          <div class="entry-time-pill">07:55 – 08:57 • Phase 7</div>
+          <h4>Grand Sangeet Freeze Pose & Confetti Blast</h4>
+          <p class="entry-dancers"><strong>Dancers:</strong> THE ENTIRE WEDDING PARTY (30+ People)</p>
+          <p class="entry-steps">Full group cluster surrounding Prince Bhaiya & Bhabhi, arms up, confetti canons fire, massive standing ovation!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exporting Modal -->
+  <div class="modal-backdrop" id="exportModal" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="exportModalTitle">⚡ Exporting Dance Mashup...</h3>
+        <button class="modal-close" onclick="closeExportModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="spinner-container" id="exportSpinner">
+          <div class="dj-spinner"></div>
+          <p id="exportStatusText">Assembling tracks in exact timeline order with FFmpeg beat-matching, DJ transitions, and broadcast mastering...</p>
+          <div class="render-progress-bar-box" style="margin: 16px auto; width: 85%; background: #1e293b; height: 8px; border-radius: 4px; overflow: hidden;">
+            <div id="exportProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #f59e0b, #10b981); transition: width 0.3s ease;"></div>
+          </div>
+          <div id="exportTimerText" style="font-family: var(--font-mono); font-size: 0.85rem; color: #f59e0b; margin-top: 4px;">Rendering: 0s / ~10s</div>
+        </div>
+        <div class="export-success-view" id="exportSuccessView" style="display:none;">
+          <div class="success-icon">🎉</div>
+          <h4 id="exportSuccessDanceTitle">Mix Successfully Rendered!</h4>
+          <p id="exportSuccessDetails">Duration: 05:21 • Broadcast Mastered at -14 LUFS (320 kbps)</p>
+          
+          <div class="download-buttons-group">
+            <a id="btnDownloadMp3" href="/api/download?format=mp3" class="btn btn-primary btn-large" download>
+              ⬇ Download Master MP3 (320 kbps)
+            </a>
+            <a id="btnDownloadWav" href="/api/download?format=wav" class="btn btn-secondary btn-large" download>
+              ⬇ Download Lossless WAV
+            </a>
+          </div>
+
+          <div style="margin-top: 18px; text-align: center;">
+            <button class="btn btn-secondary btn-icon-sm" onclick="forceReRenderMix()" style="font-size: 0.8rem; color: #94a3b8; border-color: #374151;">
+              🔄 Re-Render Fresh Mix
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
