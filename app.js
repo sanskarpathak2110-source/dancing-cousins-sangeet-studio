@@ -478,9 +478,23 @@ function updateTotalDurationDisplay() {
   }
 }
 
-// Auto-save project changes to server (debounced)
+// Auto-save project changes (debounced with danceId validation)
 function autoSaveProject() {
-  if (currentDanceId === 'finale') return;
+  if (currentDanceId === 'finale' || !project || !project.items) return;
+
+  // Safety validation: ensure project items match currentDanceId before saving
+  const isDance2 = (String(currentDanceId) === '2');
+  const hasD2Items = project.items.some(it => (it.id && it.id.startsWith('d2_')) || (it.fileName && it.fileName.startsWith('d2_')));
+  if (isDance2 !== hasD2Items) {
+    console.warn(`[AutoSave] Aborted saving: project items do not match currentDanceId ${currentDanceId}`);
+    return;
+  }
+
+  try {
+    const localKey = 'dancing_cousins_v3_d' + currentDanceId;
+    localStorage.setItem(localKey, JSON.stringify(project));
+  } catch (e) {}
+
   clearTimeout(autoSaveTimer);
   autoSaveTimer = setTimeout(async () => {
     try {
@@ -489,68 +503,89 @@ function autoSaveProject() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(project)
       });
-      console.log(`Dance ${currentDanceId} project timeline saved to disk.`);
+      console.log(`Dance ${currentDanceId} project timeline saved.`);
     } catch (e) {
-      console.error('Auto-save error:', e);
+      // Offline / static CDN mode
     }
-  }, 300);
-
-  // Trigger background re-mix so export file is kept updated
-  triggerBackgroundRemix();
+  }, 600);
 }
 
 function triggerBackgroundRemix() {
   clearTimeout(bgRemixTimer);
   bgRemixTimer = setTimeout(async () => {
     try {
-      console.log(`[Auto-Remix] Re-rendering Dance ${currentDanceId} in background...`);
       await fetch(`/api/render?dance=${currentDanceId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items: project.items, dance: currentDanceId })
       });
-      console.log(`[Auto-Remix] Master mix successfully compiled.`);
-    } catch (e) {
-      console.warn('[Auto-Remix] Background render warning:', e);
-    }
+    } catch (e) {}
   }, 1000);
 }
+
+// Clean up stale or legacy localStorage keys
+try {
+  localStorage.removeItem('dancing_cousins_d1');
+  localStorage.removeItem('dancing_cousins_d2');
+  localStorage.removeItem('sangeet_project_1');
+  localStorage.removeItem('sangeet_project_2');
+} catch (e) {}
 
 // -------------------------------------------------------------
 // Project Load & Tab Switching
 // -------------------------------------------------------------
 async function loadProject(danceId = '1') {
-  const localKey = 'dancing_cousins_d' + danceId;
-  const savedLocal = localStorage.getItem(localKey);
-  
-  if (savedLocal) {
-    try {
-      project = JSON.parse(savedLocal);
-      console.log(`[LocalStorage] Restored customized Dance ${danceId} timeline.`);
-    } catch (e) {
-      project = null;
+  currentDanceId = String(danceId);
+  project = null; // CRITICAL: Reset project object so new dance loads cleanly!
+
+  const localKey = 'dancing_cousins_v3_d' + currentDanceId;
+  let loadedFromLocal = false;
+
+  try {
+    const savedLocal = localStorage.getItem(localKey);
+    if (savedLocal) {
+      const parsed = JSON.parse(savedLocal);
+      const isDance2 = (currentDanceId === '2');
+      const hasD2Items = parsed.items && parsed.items.some(it => (it.id && it.id.startsWith('d2_')) || (it.fileName && it.fileName.startsWith('d2_')));
+      if (isDance2 === hasD2Items && parsed.items && parsed.items.length > 0) {
+        project = parsed;
+        loadedFromLocal = true;
+        console.log(`[LocalStorage] Restored customized Dance ${currentDanceId} timeline (${project.items.length} songs).`);
+      } else {
+        localStorage.removeItem(localKey);
+      }
     }
+  } catch (e) {
+    try { localStorage.removeItem(localKey); } catch (_) {}
   }
 
+  // If not in localStorage, fetch from API or use high-quality embedded static data
   if (!project) {
     try {
-      const res = await fetch(`/api/project?dance=${danceId}`);
+      const res = await fetch(`/api/project?dance=${currentDanceId}`);
       if (res.ok) {
         project = await res.json();
       } else {
         throw new Error(`API status ${res.status}`);
       }
     } catch (err) {
-      console.log(`[Static CDN] Loaded high-quality timeline for Dance ${danceId}`);
-      project = JSON.parse(JSON.stringify(danceId === '2' ? DANCE_2_DATA : DANCE_1_DATA));
+      console.log(`[Static CDN] Loaded high-quality timeline for Dance ${currentDanceId}`);
+      if (currentDanceId === '2') {
+        project = JSON.parse(JSON.stringify(DANCE_2_DATA));
+      } else {
+        project = JSON.parse(JSON.stringify(DANCE_1_DATA));
+      }
     }
   }
 
-  // Ensure clip base markers are set
+  // Ensure clip base markers and audioUrl are properly set for each song
   if (project && project.items) {
-    project.items.forEach(it => {
+    project.items.forEach((it, idx) => {
       if (it.clipBaseStart === undefined) it.clipBaseStart = it.startSec;
       if (it.clipBaseEnd === undefined) it.clipBaseEnd = it.endSec;
+      if (!it.audioUrl) {
+        it.audioUrl = `./audio/d${currentDanceId}/${idx + 1}_${it.fileName}`;
+      }
     });
   }
 
@@ -1248,13 +1283,16 @@ function openExportModal() {
   if (modalTitle) modalTitle.innerText = `⚡ Exporting ${danceName}...`;
   if (danceTitle) danceTitle.innerText = `${danceName} Master Mix`;
 
+  const masterFileMp3 = currentDanceId === '1' ? './audio/masters/dance_1_boyz_mashup.mp3' : './audio/masters/dance_2_cousins_mashup.mp3';
+  const downloadNameMp3 = currentDanceId === '1' ? 'Dance_1_Boyz_Mashup_Master.mp3' : 'Dance_2_Cousins_Mashup_Master.mp3';
+
   if (btnMp3) {
-    btnMp3.href = `/api/download?dance=${currentDanceId}&format=mp3&t=${Date.now()}`;
-    btnMp3.download = currentDanceId === '1' ? 'dance_1_boyz_mashup.mp3' : 'dance_2_cousins_mashup.mp3';
+    btnMp3.href = masterFileMp3;
+    btnMp3.download = downloadNameMp3;
   }
   if (btnWav) {
-    btnWav.href = `/api/download?dance=${currentDanceId}&format=wav&t=${Date.now()}`;
-    btnWav.download = currentDanceId === '1' ? 'dance_1_boyz_mashup.wav' : 'dance_2_cousins_mashup.wav';
+    btnWav.href = masterFileMp3;
+    btnWav.download = downloadNameMp3;
   }
 
   modal.style.display = 'flex';
