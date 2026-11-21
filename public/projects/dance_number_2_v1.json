@@ -1,5 +1,5 @@
 {
-  "projectName": "DANCE NUMBER 2 \u2013 COUSINS COMBINED",
+  "projectName": "DANCE NUMBER 2 – COUSINS COMBINED",
   "occasion": "Brother's Wedding Sangeet (Prince Bhaiya)",
   "performance": "Cousins Combined Bollywood Family Dance",
   "targetDurationSec": 330,
@@ -195,12 +195,12 @@
     {
       "id": "d2_song7",
       "order": 6,
-      "title": "Oh Ho Ho Ho \u2013 Ishq Tera Tadpave",
-      "movie": "Hindi Medium / Sukhbir Original",
-      "singer": "Sukhbir & Ikka",
+      "title": "Oh Ho Ho Ho (Remix)",
+      "movie": "Hindi Medium",
+      "singer": "Sukhbir, Ikka",
       "fileName": "d2_7_oh_ho_ho_ho.mp3",
       "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\d2_7_oh_ho_ho_ho.mp3",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Oh+Ho+Ho+Ho+Ishq+Tera+Tadpave+original",
+      "youtubeUrl": "https://www.youtube.com/watch?v=NJwGCa0QRz8",
       "startSec": 15,
       "endSec": 65,
       "durationSec": 50.0,
@@ -220,7 +220,7 @@
       "audioUrl": "./audio/d2/6_oh_ho_ho_ho.mp3",
       "clipBaseStart": 15,
       "clipBaseEnd": 65,
-      "fullDurationSec": 235.2,
+      "fullDurationSec": 151.2,
       "segments": [
         {
           "id": "seg_1",

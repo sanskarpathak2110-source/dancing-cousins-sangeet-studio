@@ -429,12 +429,12 @@ const DANCE_2_DATA = {
     {
       "id": "d2_song7",
       "order": 6,
-      "title": "Oh Ho Ho Ho \u2013 Ishq Tera Tadpave",
-      "movie": "Hindi Medium / Sukhbir Original",
-      "singer": "Sukhbir & Ikka",
+      "title": "Oh Ho Ho Ho (Remix)",
+      "movie": "Hindi Medium",
+      "singer": "Sukhbir, Ikka",
       "fileName": "d2_7_oh_ho_ho_ho.mp3",
       "filePath": "C:\\Users\\sanka\\.gemini\\antigravity\\scratch\\sangeet_mashup_studio\\audio_inputs\\d2_7_oh_ho_ho_ho.mp3",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Oh+Ho+Ho+Ho+Ishq+Tera+Tadpave+original",
+      "youtubeUrl": "https://www.youtube.com/watch?v=NJwGCa0QRz8",
       "startSec": 15,
       "endSec": 65,
       "durationSec": 50.0,
@@ -454,7 +454,7 @@ const DANCE_2_DATA = {
       "audioUrl": "./audio/d2/6_oh_ho_ho_ho.mp3",
       "clipBaseStart": 15,
       "clipBaseEnd": 65,
-      "fullDurationSec": 235.2,
+      "fullDurationSec": 151.2,
       "segments": [
         {
           "id": "seg_1",
@@ -626,7 +626,7 @@ function autoSaveProject() {
   }
 
   try {
-    const localKey = 'dancing_cousins_v4_d' + currentDanceId;
+    const localKey = 'dancing_cousins_v5_d' + currentDanceId;
     localStorage.setItem(localKey, JSON.stringify(project));
   } catch (e) {}
 
@@ -651,6 +651,8 @@ try {
   localStorage.removeItem('dancing_cousins_v2_d2');
   localStorage.removeItem('dancing_cousins_v3_d1');
   localStorage.removeItem('dancing_cousins_v3_d2');
+  localStorage.removeItem('dancing_cousins_v4_d1');
+  localStorage.removeItem('dancing_cousins_v4_d2');
   localStorage.removeItem('sangeet_project_1');
   localStorage.removeItem('sangeet_project_2');
 } catch (e) {}
@@ -686,7 +688,7 @@ async function loadProject(danceId = '1') {
     return;
   }
 
-  const localKey = 'dancing_cousins_v4_d' + currentDanceId;
+  const localKey = 'dancing_cousins_v5_d' + currentDanceId;
   let loadedFromLocal = false;
 
   try {
