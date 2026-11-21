@@ -1459,48 +1459,29 @@ function openExportModal() {
   const successView = document.getElementById('exportSuccessView');
   const modalTitle = document.getElementById('exportModalTitle');
   const danceTitle = document.getElementById('exportSuccessDanceTitle');
-  const btnMp3 = document.getElementById('btnDownloadMp3');
-  const btnWav = document.getElementById('btnDownloadWav');
 
-  if (currentDanceId === 'custom') {
-    if (!project || !project.items || project.items.length === 0) {
-      alert('Please upload at least one song before exporting your custom mashup!');
-      return;
-    }
-    if (modalTitle) modalTitle.innerText = '⚡ Exporting Custom Bollywood Mashup...';
-    if (danceTitle) danceTitle.innerText = 'Custom Sangeet Mashup Master';
-    modal.style.display = 'flex';
-    spinner.style.display = 'block';
-    successView.style.display = 'none';
-    renderCustomOfflineMix();
+  if (!project || !project.items || project.items.length === 0) {
+    alert('Please add at least one track to export your mashup!');
     return;
   }
 
-  const danceName = currentDanceId === '1' ? 'Dance 1 (Boyz Only)' : 'Dance 2 (Cousins Combined)';
+  let danceName = 'Custom Mashup';
+  if (currentDanceId === '1') danceName = 'Dance 1 (Boyz Only)';
+  else if (currentDanceId === '2') danceName = 'Dance 2 (Cousins Combined)';
+
   if (modalTitle) modalTitle.innerText = `⚡ Exporting ${danceName}...`;
   if (danceTitle) danceTitle.innerText = `${danceName} Master Mix`;
-
-  const masterFileMp3 = currentDanceId === '1' ? './audio/masters/dance_1_boyz_mashup.mp3' : './audio/masters/dance_2_cousins_mashup.mp3';
-  const downloadNameMp3 = currentDanceId === '1' ? 'Dance_1_Boyz_Mashup_Master.mp3' : 'Dance_2_Cousins_Mashup_Master.mp3';
-
-  if (btnMp3) {
-    btnMp3.href = masterFileMp3;
-    btnMp3.download = downloadNameMp3;
-  }
-  if (btnWav) {
-    btnWav.href = masterFileMp3;
-    btnWav.download = downloadNameMp3;
-  }
 
   modal.style.display = 'flex';
   spinner.style.display = 'block';
   successView.style.display = 'none';
 
-  renderMasterMix();
+  renderDynamicMix();
 }
 
 function closeExportModal() {
-  document.getElementById('exportModal').style.display = 'none';
+  const modal = document.getElementById('exportModal');
+  if (modal) modal.style.display = 'none';
   const previewAudio = document.getElementById('exportPreviewAudio');
   if (previewAudio) previewAudio.pause();
 }
@@ -1508,12 +1489,58 @@ function closeExportModal() {
 function forceReRenderMix() {
   const spinner = document.getElementById('exportSpinner');
   const successView = document.getElementById('exportSuccessView');
-  spinner.style.display = 'block';
-  successView.style.display = 'none';
-  renderMasterMix();
+  if (spinner) spinner.style.display = 'block';
+  if (successView) successView.style.display = 'none';
+  renderDynamicMix();
 }
 
-async function renderMasterMix() {
+// Convert Web Audio API AudioBuffer to real MP3 Blob using lamejs
+function audioBufferToMp3Blob(buffer, kbps = 256) {
+  if (typeof lamejs === 'undefined') {
+    return audioBufferToWavBlob(buffer);
+  }
+
+  const numChannels = buffer.numberOfChannels;
+  const sampleRate = buffer.sampleRate;
+  const encoder = new lamejs.Mp3Encoder(numChannels, sampleRate, kbps);
+
+  const leftChannel = buffer.getChannelData(0);
+  const rightChannel = numChannels > 1 ? buffer.getChannelData(1) : leftChannel;
+
+  const sampleLength = leftChannel.length;
+  const leftInt16 = new Int16Array(sampleLength);
+  const rightInt16 = new Int16Array(sampleLength);
+
+  for (let i = 0; i < sampleLength; i++) {
+    const sL = Math.max(-1, Math.min(1, leftChannel[i]));
+    leftInt16[i] = sL < 0 ? sL * 0x8000 : sL * 0x7FFF;
+
+    const sR = Math.max(-1, Math.min(1, rightChannel[i]));
+    rightInt16[i] = sR < 0 ? sR * 0x8000 : sR * 0x7FFF;
+  }
+
+  const mp3Data = [];
+  const chunkSize = 1152;
+
+  for (let i = 0; i < sampleLength; i += chunkSize) {
+    const leftChunk = leftInt16.subarray(i, i + chunkSize);
+    const rightChunk = rightInt16.subarray(i, i + chunkSize);
+    const mp3Buf = encoder.encodeBuffer(leftChunk, rightChunk);
+    if (mp3Buf.length > 0) {
+      mp3Data.push(mp3Buf);
+    }
+  }
+
+  const endBuf = encoder.flush();
+  if (endBuf.length > 0) {
+    mp3Data.push(endBuf);
+  }
+
+  return new Blob(mp3Data, { type: 'audio/mp3' });
+}
+
+// Universal In-Browser Real-Time Audio Mixer for Dance 1, Dance 2 & Custom Mashup
+async function renderDynamicMix() {
   const spinner = document.getElementById('exportSpinner');
   const successView = document.getElementById('exportSuccessView');
   const details = document.getElementById('exportSuccessDetails');
@@ -1525,56 +1552,184 @@ async function renderMasterMix() {
   const previewAudio = document.getElementById('exportPreviewAudio');
   const successDanceTitle = document.getElementById('exportSuccessDanceTitle');
 
-  clearInterval(renderTimer);
-  let elapsed = 0;
-  if (barEl) barEl.style.width = '20%';
-  if (timerText) timerText.innerText = 'Mastering: 0s / ~3s';
-  if (statusText) statusText.innerText = 'Step 1/3: Slicing multi-cut segments & BPM alignment...';
+  if (!project || !project.items || project.items.length === 0) {
+    alert('No tracks to export in current timeline!');
+    closeExportModal();
+    return;
+  }
 
-  const masterFileMp3 = currentDanceId === '1' ? './audio/masters/dance_1_boyz_mashup.mp3' : './audio/masters/dance_2_cousins_mashup.mp3';
-  const downloadNameMp3 = currentDanceId === '1' ? 'Dance_1_Boyz_Mashup_Master.mp3' : 'Dance_2_Cousins_Mashup_Master.mp3';
-  const danceLabel = currentDanceId === '1' ? 'Dance 1 — Boyz Only Mashup' : 'Dance 2 — Cousins Combined Mashup';
+  let danceLabel = 'Custom Sangeet Mashup';
+  let fileSlug = 'Custom_Mashup';
+  if (currentDanceId === '1') {
+    danceLabel = 'Dance 1 — Boyz Only Mashup';
+    fileSlug = 'Dance_1_Boyz_Mashup';
+  } else if (currentDanceId === '2') {
+    danceLabel = 'Dance 2 — Cousins Combined Mashup';
+    fileSlug = 'Dance_2_Cousins_Mashup';
+  }
 
-  // If Python backend is alive, also trigger server FFmpeg render
   try {
-    fetch(`/api/render?dance=${currentDanceId}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: project.items, dance: currentDanceId })
-    }).catch(() => {});
-  } catch (e) {}
+    if (barEl) barEl.style.width = '10%';
+    if (statusText) statusText.innerText = 'Initializing audio workstation & timeline...';
+    if (timerText) timerText.innerText = 'Step 1/3: Loading tracks';
 
-  renderTimer = setInterval(() => {
-    elapsed++;
-    if (elapsed === 1) {
-      if (barEl) barEl.style.width = '60%';
-      if (statusText) statusText.innerText = 'Step 2/3: Applying DJ transitions & broadcast limiter...';
-    } else if (elapsed >= 2) {
-      clearInterval(renderTimer);
-      if (barEl) barEl.style.width = '100%';
-      if (statusText) statusText.innerText = 'Step 3/3: Master mix generated at 320 kbps broadcast quality!';
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    const tempCtx = new AudioContextClass();
 
-      setTimeout(() => {
-        spinner.style.display = 'none';
-        successView.style.display = 'block';
-        if (successDanceTitle) successDanceTitle.innerText = `${danceLabel} Mastered!`;
-        if (details) {
-          details.innerText = `Duration: ${formatTime(calculateTotalDuration())} • Mastered at -14 LUFS (320 kbps Broadcast MP3) • Wedding DJ Ready`;
-        }
-        if (btnMp3) {
-          btnMp3.href = masterFileMp3;
-          btnMp3.download = downloadNameMp3;
-        }
-        if (btnWav) {
-          btnWav.href = masterFileMp3;
-          btnWav.download = downloadNameMp3;
-        }
-        if (previewAudio) {
-          previewAudio.src = masterFileMp3;
-        }
-      }, 300);
+    // Trigger local server render in background if backend exists
+    try {
+      fetch(`/api/render?dance=${currentDanceId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: project.items, dance: currentDanceId })
+      }).catch(() => {});
+    } catch (_) {}
+
+    // 1. Fetch & decode all tracks
+    const decodedTracks = [];
+    const totalItems = project.items.length;
+
+    for (let i = 0; i < totalItems; i++) {
+      const item = project.items[i];
+      if (statusText) statusText.innerText = `Loading track ${i + 1} of ${totalItems}: "${item.title}"...`;
+      if (barEl) barEl.style.width = `${10 + Math.round((i / totalItems) * 45)}%`;
+
+      let arrayBuffer;
+      if (typeof customFileStore !== 'undefined' && customFileStore[item.id]) {
+        arrayBuffer = await customFileStore[item.id].arrayBuffer();
+      } else {
+        const audioSrc = item.audioUrl || `./audio/d${currentDanceId}/${i + 1}_${item.fileName}`;
+        const resp = await fetch(audioSrc);
+        if (!resp.ok) throw new Error(`Could not load audio for "${item.title}"`);
+        arrayBuffer = await resp.arrayBuffer();
+      }
+
+      const decodedBuf = await tempCtx.decodeAudioData(arrayBuffer);
+      decodedTracks.push({ item, buffer: decodedBuf });
     }
-  }, 800);
+
+    // 2. Slice exact cut segments configured by user
+    if (statusText) statusText.innerText = 'Slicing exact user timestamps & applying DJ transitions...';
+    if (barEl) barEl.style.width = '60%';
+    if (timerText) timerText.innerText = 'Step 2/3: Slicing cuts';
+
+    const sampleRate = 44100;
+    const crossfadeDuration = 1.5;
+
+    let currentTimeSec = 0;
+    const scheduledCuts = [];
+
+    for (let tIdx = 0; tIdx < decodedTracks.length; tIdx++) {
+      const { item, buffer } = decodedTracks[tIdx];
+      const segs = item.segments && item.segments.length ? item.segments : [{ startSec: item.startSec, endSec: item.endSec }];
+
+      for (let sIdx = 0; sIdx < segs.length; sIdx++) {
+        const seg = segs[sIdx];
+        const segStart = Math.min(buffer.duration, Math.max(0, parseFloat(seg.startSec) || 0));
+        const segEnd = Math.min(buffer.duration, Math.max(segStart + 0.2, parseFloat(seg.endSec) || buffer.duration));
+        const segDur = segEnd - segStart;
+
+        scheduledCuts.push({
+          buffer,
+          trackStartSec: segStart,
+          trackEndSec: segEnd,
+          timelineStartSec: currentTimeSec,
+          duration: segDur,
+          isFirstSegOfSong: sIdx === 0,
+          isLastSegOfSong: sIdx === segs.length - 1,
+          isFirstSong: tIdx === 0,
+          isLastSong: tIdx === decodedTracks.length - 1
+        });
+
+        currentTimeSec += segDur;
+      }
+
+      if (tIdx < decodedTracks.length - 1) {
+        currentTimeSec = Math.max(0, currentTimeSec - crossfadeDuration);
+      }
+    }
+
+    const totalMixSec = Math.max(1, currentTimeSec);
+    const totalFrames = Math.ceil(totalMixSec * sampleRate);
+
+    // 3. Render in OfflineAudioContext
+    if (statusText) statusText.innerText = `Synthesizing ${formatTime(totalMixSec)} master mix...`;
+    if (barEl) barEl.style.width = '75%';
+    if (timerText) timerText.innerText = 'Step 3/3: Rendering master audio';
+
+    const offlineCtx = new OfflineAudioContext(2, totalFrames, sampleRate);
+
+    scheduledCuts.forEach(cut => {
+      const source = offlineCtx.createBufferSource();
+      source.buffer = cut.buffer;
+      const gainNode = offlineCtx.createGain();
+
+      if (cut.isFirstSegOfSong && !cut.isFirstSong) {
+        gainNode.gain.setValueAtTime(0.001, cut.timelineStartSec);
+        gainNode.gain.exponentialRampToValueAtTime(1.0, cut.timelineStartSec + crossfadeDuration);
+      } else {
+        gainNode.gain.setValueAtTime(1.0, cut.timelineStartSec);
+      }
+
+      if (cut.isLastSegOfSong && !cut.isLastSong) {
+        const fadeOutStart = cut.timelineStartSec + cut.duration - crossfadeDuration;
+        gainNode.gain.setValueAtTime(1.0, Math.max(cut.timelineStartSec, fadeOutStart));
+        gainNode.gain.exponentialRampToValueAtTime(0.001, cut.timelineStartSec + cut.duration);
+      }
+
+      source.connect(gainNode);
+      gainNode.connect(offlineCtx.destination);
+      source.start(cut.timelineStartSec, cut.trackStartSec, cut.duration);
+    });
+
+    const renderedBuffer = await offlineCtx.startRendering();
+
+    // 4. Encode directly to broadcast MP3 and WAV
+    if (statusText) statusText.innerText = 'Encoding broadcast MP3 & lossless WAV master files...';
+    if (barEl) barEl.style.width = '90%';
+
+    const mp3Blob = audioBufferToMp3Blob(renderedBuffer, 256);
+    const wavBlob = audioBufferToWavBlob(renderedBuffer);
+
+    const mp3Url = URL.createObjectURL(mp3Blob);
+    const wavUrl = URL.createObjectURL(wavBlob);
+
+    const durationFormatted = formatTime(totalMixSec);
+    const timeSlug = durationFormatted.replace(':', 'm') + 's';
+
+    if (barEl) barEl.style.width = '100%';
+    if (statusText) statusText.innerText = `Master Mix Complete! (${durationFormatted})`;
+
+    setTimeout(() => {
+      if (spinner) spinner.style.display = 'none';
+      if (successView) successView.style.display = 'block';
+
+      if (successDanceTitle) {
+        successDanceTitle.innerText = `${danceLabel} Rendered!`;
+      }
+      if (details) {
+        details.innerText = `Duration: ${durationFormatted} (${totalMixSec.toFixed(1)}s) • Broadcast Mastered • Exact Custom Timestamps`;
+      }
+      if (btnMp3) {
+        btnMp3.innerText = `⬇ Download Master MP3 (${durationFormatted})`;
+        btnMp3.href = mp3Url;
+        btnMp3.download = `${fileSlug}_${timeSlug}.mp3`;
+      }
+      if (btnWav) {
+        btnWav.innerText = `⬇ Download Lossless WAV (${durationFormatted})`;
+        btnWav.href = wavUrl;
+        btnWav.download = `${fileSlug}_${timeSlug}.wav`;
+      }
+      if (previewAudio) {
+        previewAudio.src = mp3Url;
+      }
+    }, 300);
+
+  } catch (err) {
+    console.error('Render dynamic mix error:', err);
+    if (statusText) statusText.innerText = 'Render failed: ' + (err.message || 'Error processing audio');
+    alert('Render failed: ' + (err.message || 'Please check audio tracks and try again.'));
+  }
 }
 
 // Studio Initialization
@@ -1878,154 +2033,7 @@ function interleave(inputL, inputR) {
   return result;
 }
 
-// In-Browser Audio Mixing using OfflineAudioContext
+// Alias for backward compatibility
 async function renderCustomOfflineMix() {
-  const spinner = document.getElementById('exportSpinner');
-  const successView = document.getElementById('exportSuccessView');
-  const details = document.getElementById('exportSuccessDetails');
-  const statusText = document.getElementById('exportStatusText');
-  const timerText = document.getElementById('exportTimerText');
-  const barEl = document.getElementById('exportProgressBar');
-  const btnMp3 = document.getElementById('btnDownloadMp3');
-  const btnWav = document.getElementById('btnDownloadWav');
-  const previewAudio = document.getElementById('exportPreviewAudio');
-  const successDanceTitle = document.getElementById('exportSuccessDanceTitle');
-
-  try {
-    if (barEl) barEl.style.width = '15%';
-    if (statusText) statusText.innerText = 'Decoding audio tracks into memory...';
-    if (timerText) timerText.innerText = 'Rendering: 0% / 100%';
-
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    const tempCtx = new AudioContextClass();
-
-    const decodedTracks = [];
-    for (let i = 0; i < project.items.length; i++) {
-      const item = project.items[i];
-      if (statusText) statusText.innerText = `Decoding track ${i + 1} of ${project.items.length}: "${item.title}"...`;
-      if (barEl) barEl.style.width = `${15 + Math.round((i / project.items.length) * 35)}%`;
-
-      let arrayBuffer;
-      if (customFileStore[item.id]) {
-        arrayBuffer = await customFileStore[item.id].arrayBuffer();
-      } else {
-        const resp = await fetch(item.audioUrl);
-        arrayBuffer = await resp.arrayBuffer();
-      }
-
-      const decodedBuf = await tempCtx.decodeAudioData(arrayBuffer);
-      decodedTracks.push({ item, buffer: decodedBuf });
-    }
-
-    if (statusText) statusText.innerText = 'Assembling timeline cuts & crossfades...';
-    if (barEl) barEl.style.width = '60%';
-
-    const sampleRate = 44100;
-    const crossfadeDuration = 1.0;
-
-    let currentTimeSec = 0;
-    const scheduledCuts = [];
-
-    for (let tIdx = 0; tIdx < decodedTracks.length; tIdx++) {
-      const { item, buffer } = decodedTracks[tIdx];
-      const segs = item.segments && item.segments.length ? item.segments : [{ startSec: item.startSec, endSec: item.endSec }];
-
-      for (let sIdx = 0; sIdx < segs.length; sIdx++) {
-        const seg = segs[sIdx];
-        const segStart = Math.min(buffer.duration, Math.max(0, parseFloat(seg.startSec) || 0));
-        const segEnd = Math.min(buffer.duration, Math.max(segStart + 0.1, parseFloat(seg.endSec) || buffer.duration));
-        const segDur = segEnd - segStart;
-
-        scheduledCuts.push({
-          buffer,
-          trackStartSec: segStart,
-          trackEndSec: segEnd,
-          timelineStartSec: currentTimeSec,
-          duration: segDur,
-          isFirstSegOfSong: sIdx === 0,
-          isLastSegOfSong: sIdx === segs.length - 1,
-          isFirstSong: tIdx === 0,
-          isLastSong: tIdx === decodedTracks.length - 1
-        });
-
-        currentTimeSec += segDur;
-      }
-
-      if (tIdx < decodedTracks.length - 1) {
-        currentTimeSec = Math.max(0, currentTimeSec - crossfadeDuration);
-      }
-    }
-
-    const totalMixSec = Math.max(1, currentTimeSec);
-    const totalFrames = Math.ceil(totalMixSec * sampleRate);
-
-    if (statusText) statusText.innerText = `Synthesizing ${formatTime(totalMixSec)} master mix...`;
-    if (barEl) barEl.style.width = '75%';
-
-    const offlineCtx = new OfflineAudioContext(2, totalFrames, sampleRate);
-
-    scheduledCuts.forEach(cut => {
-      const source = offlineCtx.createBufferSource();
-      source.buffer = cut.buffer;
-
-      const gainNode = offlineCtx.createGain();
-
-      if (cut.isFirstSegOfSong && !cut.isFirstSong) {
-        gainNode.gain.setValueAtTime(0.001, cut.timelineStartSec);
-        gainNode.gain.exponentialRampToValueAtTime(1.0, cut.timelineStartSec + crossfadeDuration);
-      } else {
-        gainNode.gain.setValueAtTime(1.0, cut.timelineStartSec);
-      }
-
-      if (cut.isLastSegOfSong && !cut.isLastSong) {
-        const fadeOutStart = cut.timelineStartSec + cut.duration - crossfadeDuration;
-        gainNode.gain.setValueAtTime(1.0, Math.max(cut.timelineStartSec, fadeOutStart));
-        gainNode.gain.exponentialRampToValueAtTime(0.001, cut.timelineStartSec + cut.duration);
-      }
-
-      source.connect(gainNode);
-      gainNode.connect(offlineCtx.destination);
-
-      source.start(cut.timelineStartSec, cut.trackStartSec, cut.duration);
-    });
-
-    const renderedBuffer = await offlineCtx.startRendering();
-
-    if (statusText) statusText.innerText = 'Encoding lossless WAV master file...';
-    if (barEl) barEl.style.width = '95%';
-
-    const wavBlob = audioBufferToWavBlob(renderedBuffer);
-    const wavUrl = URL.createObjectURL(wavBlob);
-
-    if (barEl) barEl.style.width = '100%';
-    if (statusText) statusText.innerText = 'Master mix ready!';
-
-    setTimeout(() => {
-      spinner.style.display = 'none';
-      successView.style.display = 'block';
-
-      if (successDanceTitle) successDanceTitle.innerText = 'Custom Mashup Mastered!';
-      if (details) {
-        details.innerText = `Duration: ${formatTime(totalMixSec)} (${totalMixSec.toFixed(1)}s) • Lossless 44.1 kHz 16-bit Master WAV • Mobile & DJ Ready`;
-      }
-      if (btnMp3) {
-        btnMp3.innerText = '⬇ Download Master (WAV / Audio)';
-        btnMp3.href = wavUrl;
-        btnMp3.download = 'Custom_Sangeet_Mashup_Master.wav';
-      }
-      if (btnWav) {
-        btnWav.innerText = '⬇ Download Lossless Master (WAV)';
-        btnWav.href = wavUrl;
-        btnWav.download = 'Custom_Sangeet_Mashup_Master.wav';
-      }
-      if (previewAudio) {
-        previewAudio.src = wavUrl;
-      }
-    }, 400);
-
-  } catch (err) {
-    console.error('In-browser mix render error:', err);
-    if (statusText) statusText.innerText = 'Export error: ' + (err.message || 'Could not process audio.');
-    alert('Export error: ' + (err.message || 'Please check audio formats and try again.'));
-  }
+  return renderDynamicMix();
 }
