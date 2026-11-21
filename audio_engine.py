@@ -1,7 +1,6 @@
 """
 Bollywood DJ Studio - Ultra-Fast Pure Original Audio Engine
-High-speed beat-matched blending of original Bollywood recordings.
-NO synthetic beeps or artificial test tones.
+Supports Multi-Segment Trimming per Song & Seamless Beat-Aligned Transitions.
 Pure original master quality with fast input-seeking, transparent peak limiting,
 and broadcast mastering.
 """
@@ -32,6 +31,7 @@ def build_mashup(timeline_items, output_basename="dance_number_1_v1"):
     """
     Renders the complete mashup from original recordings using smooth,
     beat-aligned sinusoidal crossfades in ~5-10 seconds via fast input seeking.
+    Supports single cut or multiple segments per song!
     """
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     n_tracks = len(timeline_items)
@@ -40,36 +40,76 @@ def build_mashup(timeline_items, output_basename="dance_number_1_v1"):
 
     inputs = []
     filter_chains = []
+    input_counter = 0
 
-    # 1. Fast input seeking and format normalization
-    for idx, item in enumerate(timeline_items):
-        start_sec = max(0.0, float(item["startSec"]))
-        end_sec = max(start_sec + 0.5, float(item["endSec"]))
-        dur = end_sec - start_sec
+    track_labels = []
+    track_durations = []
+
+    # 1. Prepare inputs and per-track segment filters
+    for t_idx, item in enumerate(timeline_items):
+        file_path = item.get("filePath")
+        if not file_path or not os.path.exists(file_path):
+            fname = os.path.basename(item.get("fileName", f"{t_idx+1}.mp3"))
+            alt_path = os.path.join(BASE_DIR, "audio_inputs", fname)
+            if os.path.exists(alt_path):
+                file_path = alt_path
+            else:
+                d_folder = "d1" if "1" in str(output_basename) else "d2"
+                file_path = os.path.join(BASE_DIR, "audio", d_folder, fname)
+
         vol_db = float(item.get("volumeDb", 0.0))
+        segments = item.get("segments")
+        if not segments or len(segments) == 0:
+            start_sec = max(0.0, float(item.get("startSec", 0.0)))
+            end_sec = max(start_sec + 0.5, float(item.get("endSec", start_sec + 30.0)))
+            segments = [{"startSec": start_sec, "endSec": end_sec}]
 
-        # Input seeking (-ss before -i) allows instant seek without decoding full song!
-        inputs.extend(["-ss", f"{start_sec:.2f}", "-t", f"{dur:.2f}", "-i", item["filePath"]])
+        seg_labels = []
+        track_dur = 0.0
 
-        chain = [f"[{idx}:a]aformat=sample_fmts=fltp:sample_rates=44100:channel_layouts=stereo"]
+        for s_idx, seg in enumerate(segments):
+            s_start = max(0.0, float(seg.get("startSec", 0.0)))
+            s_end = max(s_start + 0.5, float(seg.get("endSec", s_start + 5.0)))
+            s_dur = s_end - s_start
+            track_dur += s_dur
+
+            inputs.extend(["-ss", f"{s_start:.2f}", "-t", f"{s_dur:.2f}", "-i", file_path])
+            current_in_idx = input_counter
+            input_counter += 1
+
+            lbl = f"[t{t_idx}_s{s_idx}]"
+            filter_chains.append(f"[{current_in_idx}:a]aformat=sample_fmts=fltp:sample_rates=44100:channel_layouts=stereo{lbl};")
+            seg_labels.append(lbl)
+
+        # Concatenate multiple segments within the same track
+        track_label = f"[track_{t_idx}]"
+        if len(seg_labels) > 1:
+            concat_inputs = "".join(seg_labels)
+            filter_chains.append(f"{concat_inputs}concat=n={len(seg_labels)}:v=0:a=1[t{t_idx}_concat];")
+            post_label = f"[t{t_idx}_concat]"
+        else:
+            post_label = seg_labels[0]
+
         if abs(vol_db) > 0.1:
-            chain.append(f"volume={vol_db:.2f}dB")
-        filter_chains.append(",".join(chain) + f"[seg{idx}];")
+            filter_chains.append(f"{post_label}volume={vol_db:.2f}dB{track_label};")
+        else:
+            filter_chains.append(f"{post_label}anull{track_label};")
 
-    # 2. Successive beat-matched crossfades
-    current_label = "[seg0]"
+        track_labels.append(track_label)
+        track_durations.append(track_dur)
+
+    # 2. Successive beat-matched crossfades between tracks
+    current_label = track_labels[0]
     cumulative_duration = 0.0
     transition_times = []
 
     for idx in range(n_tracks - 1):
         item = timeline_items[idx]
-        seg_dur = float(item["endSec"]) - float(item["startSec"])
+        seg_dur = track_durations[idx]
         trans = item.get("transitionOut", {})
         trans_dur = float(trans.get("duration", 2.0))
-        
-        # Keep transition between 1.0s and 2.5s for clean blending
         trans_dur = max(1.0, min(trans_dur, 2.5, seg_dur * 0.35))
-        
+
         cumulative_duration += (seg_dur - trans_dur)
         transition_times.append({
             "time": cumulative_duration,
@@ -78,12 +118,11 @@ def build_mashup(timeline_items, output_basename="dance_number_1_v1"):
             "duration": trans_dur
         })
 
-        next_label = f"[blend{idx+1}]"
-        next_seg = f"[seg{idx+1}]"
+        next_label = f"[blend_{idx+1}]"
+        next_track = track_labels[idx + 1]
 
-        # Smooth quarter-sine equal power crossfade
         filter_chains.append(
-            f"{current_label}{next_seg}acrossfade=d={trans_dur:.2f}:c1=qsin:c2=qsin{next_label};"
+            f"{current_label}{next_track}acrossfade=d={trans_dur:.2f}:c1=qsin:c2=qsin{next_label};"
         )
         current_label = next_label
 
@@ -94,7 +133,6 @@ def build_mashup(timeline_items, output_basename="dance_number_1_v1"):
     final_mp3 = os.path.join(OUTPUT_DIR, f"{output_basename}.mp3")
     final_wav = os.path.join(OUTPUT_DIR, f"{output_basename}.wav")
 
-    # Direct 320kbps MP3 master render (lightning fast ~5-10s)
     cmd_mp3 = [
         FFMPEG_EXE, "-y"
     ] + inputs + [
@@ -115,7 +153,6 @@ def build_mashup(timeline_items, output_basename="dance_number_1_v1"):
     if res_mp3.returncode != 0:
         raise RuntimeError(f"FFmpeg MP3 encode error: {res_mp3.stderr}")
 
-    # Also fast export WAV from the master in 1 second
     cmd_wav = [
         FFMPEG_EXE, "-y",
         "-i", final_mp3,

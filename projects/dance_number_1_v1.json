@@ -18,7 +18,7 @@
       "youtubeUrl": "https://www.youtube.com/results?search_query=Oo+Jane+Jaana+original+song",
       "startSec": 13,
       "endSec": 75,
-      "durationSec": 55,
+      "durationSec": 62.0,
       "originalBpm": 106,
       "targetBpm": 106,
       "key": "G Major",
@@ -32,9 +32,17 @@
         "name": "Bass Drop & Courtship Groove Bridge",
         "description": "Smooth 2.2-second crossfade aligning the guitar resolution with the playful towel-dance rhythm!"
       },
-      "audioUrl": "./audio/d1/1_1_oo_jane_jaana.mp3",
+      "audioUrl": "./audio/d1/1_oo_jane_jaana.mp3",
       "clipBaseStart": 13,
-      "clipBaseEnd": 75
+      "clipBaseEnd": 75,
+      "fullDurationSec": 256.2,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 13.0,
+          "endSec": 75.0
+        }
+      ]
     },
     {
       "id": "song3",
@@ -47,7 +55,7 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=xq84UA3eCV8",
       "startSec": 5,
       "endSec": 58,
-      "durationSec": 53,
+      "durationSec": 53.0,
       "originalBpm": 128,
       "targetBpm": 128,
       "key": "F# Minor",
@@ -61,9 +69,17 @@
         "name": "Percussion Riser into Heavy War-Drum Stomp",
         "description": "Accelerating riser building anticipation, dropping directly into the tribal dholak thuds of Khalibali!"
       },
-      "audioUrl": "./audio/d1/2_3_desi_boyz.mp3",
+      "audioUrl": "./audio/d1/2_desi_boyz.mp3",
       "clipBaseStart": 5,
-      "clipBaseEnd": 58
+      "clipBaseEnd": 58,
+      "fullDurationSec": 90.2,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 5.0,
+          "endSec": 58.0
+        }
+      ]
     },
     {
       "id": "song2",
@@ -76,7 +92,7 @@
       "youtubeUrl": "https://www.youtube.com/results?search_query=Tu+Dil+Maangda+Hai+Dildaar+Sohniye",
       "startSec": 0,
       "endSec": 95,
-      "durationSec": 55,
+      "durationSec": 95.0,
       "originalBpm": 104,
       "targetBpm": 104,
       "key": "E Minor",
@@ -90,9 +106,17 @@
         "name": "Drum Fill into Hip-Hop Brotherhood Beat",
         "description": "Snappy drum fill into the syncopated bassline of Desi Boyz!"
       },
-      "audioUrl": "./audio/d1/3_2_tu_dil_maangda.mp3",
+      "audioUrl": "./audio/d1/3_tu_dil_maangda.mp3",
       "clipBaseStart": 0,
-      "clipBaseEnd": 95
+      "clipBaseEnd": 95,
+      "fullDurationSec": 295.3,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 0.0,
+          "endSec": 95.0
+        }
+      ]
     },
     {
       "id": "song4",
@@ -105,7 +129,7 @@
       "youtubeUrl": "https://www.youtube.com/results?search_query=Kali+Bhali+song",
       "startSec": 45,
       "endSec": 100,
-      "durationSec": 55,
+      "durationSec": 55.0,
       "originalBpm": 130,
       "targetBpm": 130,
       "key": "D Minor",
@@ -119,9 +143,17 @@
         "name": "Reverse Cymbal Sweep into 90s Nostalgia",
         "description": "Energy releases with a cymbal swell into the celebratory acoustic dholak of Chunari Chunari!"
       },
-      "audioUrl": "./audio/d1/4_4_kali_bhali.mp3",
+      "audioUrl": "./audio/d1/4_kali_bhali.mp3",
       "clipBaseStart": 45,
-      "clipBaseEnd": 100
+      "clipBaseEnd": 100,
+      "fullDurationSec": 204.0,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 45.0,
+          "endSec": 100.0
+        }
+      ]
     },
     {
       "id": "song5",
@@ -134,7 +166,7 @@
       "youtubeUrl": "https://www.youtube.com/results?search_query=Chunari+Chunari+original+song",
       "startSec": 38,
       "endSec": 92,
-      "durationSec": 54,
+      "durationSec": 54.0,
       "originalBpm": 122,
       "targetBpm": 122,
       "key": "A Minor",
@@ -148,9 +180,17 @@
         "name": "High Dhol Roll into Baraat Climax",
         "description": "Rapid Punjabi dhol roll shifting gear into top BPM for the final groom-teasing Bhangra track!"
       },
-      "audioUrl": "./audio/d1/5_5_chunari_chunari.mp3",
+      "audioUrl": "./audio/d1/5_chunari_chunari.mp3",
       "clipBaseStart": 38,
-      "clipBaseEnd": 92
+      "clipBaseEnd": 92,
+      "fullDurationSec": 300.8,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 38.0,
+          "endSec": 92.0
+        }
+      ]
     },
     {
       "id": "song6",
@@ -163,7 +203,7 @@
       "youtubeUrl": "https://www.youtube.com/results?search_query=Bhootni+Ke+original+song",
       "startSec": 42,
       "endSec": 98,
-      "durationSec": 56,
+      "durationSec": 56.0,
       "originalBpm": 132,
       "targetBpm": 132,
       "key": "C# Minor / Db Major",
@@ -177,9 +217,17 @@
         "name": "Grand Final Freeze & Pyro Cue",
         "description": "Explosive final kick into instant freeze pose with roaring crowd applause!"
       },
-      "audioUrl": "./audio/d1/6_6_bhootni_ke.mp3",
+      "audioUrl": "./audio/d1/6_bhootni_ke.mp3",
       "clipBaseStart": 42,
-      "clipBaseEnd": 98
+      "clipBaseEnd": 98,
+      "fullDurationSec": 305.3,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 42.0,
+          "endSec": 98.0
+        }
+      ]
     }
   ]
 }

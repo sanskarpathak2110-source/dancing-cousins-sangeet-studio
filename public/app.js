@@ -19,7 +19,7 @@ const DANCE_1_DATA = {
       "youtubeUrl": "https://www.youtube.com/results?search_query=Oo+Jane+Jaana+original+song",
       "startSec": 13,
       "endSec": 75,
-      "durationSec": 55,
+      "durationSec": 62.0,
       "originalBpm": 106,
       "targetBpm": 106,
       "key": "G Major",
@@ -33,9 +33,17 @@ const DANCE_1_DATA = {
         "name": "Bass Drop & Courtship Groove Bridge",
         "description": "Smooth 2.2-second crossfade aligning the guitar resolution with the playful towel-dance rhythm!"
       },
-      "audioUrl": "./audio/d1/1_1_oo_jane_jaana.mp3",
+      "audioUrl": "./audio/d1/1_oo_jane_jaana.mp3",
       "clipBaseStart": 13,
-      "clipBaseEnd": 75
+      "clipBaseEnd": 75,
+      "fullDurationSec": 256.2,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 13.0,
+          "endSec": 75.0
+        }
+      ]
     },
     {
       "id": "song3",
@@ -48,7 +56,7 @@ const DANCE_1_DATA = {
       "youtubeUrl": "https://www.youtube.com/watch?v=xq84UA3eCV8",
       "startSec": 5,
       "endSec": 58,
-      "durationSec": 53,
+      "durationSec": 53.0,
       "originalBpm": 128,
       "targetBpm": 128,
       "key": "F# Minor",
@@ -62,9 +70,17 @@ const DANCE_1_DATA = {
         "name": "Percussion Riser into Heavy War-Drum Stomp",
         "description": "Accelerating riser building anticipation, dropping directly into the tribal dholak thuds of Khalibali!"
       },
-      "audioUrl": "./audio/d1/2_3_desi_boyz.mp3",
+      "audioUrl": "./audio/d1/2_desi_boyz.mp3",
       "clipBaseStart": 5,
-      "clipBaseEnd": 58
+      "clipBaseEnd": 58,
+      "fullDurationSec": 90.2,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 5.0,
+          "endSec": 58.0
+        }
+      ]
     },
     {
       "id": "song2",
@@ -77,7 +93,7 @@ const DANCE_1_DATA = {
       "youtubeUrl": "https://www.youtube.com/results?search_query=Tu+Dil+Maangda+Hai+Dildaar+Sohniye",
       "startSec": 0,
       "endSec": 95,
-      "durationSec": 55,
+      "durationSec": 95.0,
       "originalBpm": 104,
       "targetBpm": 104,
       "key": "E Minor",
@@ -91,9 +107,17 @@ const DANCE_1_DATA = {
         "name": "Drum Fill into Hip-Hop Brotherhood Beat",
         "description": "Snappy drum fill into the syncopated bassline of Desi Boyz!"
       },
-      "audioUrl": "./audio/d1/3_2_tu_dil_maangda.mp3",
+      "audioUrl": "./audio/d1/3_tu_dil_maangda.mp3",
       "clipBaseStart": 0,
-      "clipBaseEnd": 95
+      "clipBaseEnd": 95,
+      "fullDurationSec": 295.3,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 0.0,
+          "endSec": 95.0
+        }
+      ]
     },
     {
       "id": "song4",
@@ -106,7 +130,7 @@ const DANCE_1_DATA = {
       "youtubeUrl": "https://www.youtube.com/results?search_query=Kali+Bhali+song",
       "startSec": 45,
       "endSec": 100,
-      "durationSec": 55,
+      "durationSec": 55.0,
       "originalBpm": 130,
       "targetBpm": 130,
       "key": "D Minor",
@@ -120,9 +144,17 @@ const DANCE_1_DATA = {
         "name": "Reverse Cymbal Sweep into 90s Nostalgia",
         "description": "Energy releases with a cymbal swell into the celebratory acoustic dholak of Chunari Chunari!"
       },
-      "audioUrl": "./audio/d1/4_4_kali_bhali.mp3",
+      "audioUrl": "./audio/d1/4_kali_bhali.mp3",
       "clipBaseStart": 45,
-      "clipBaseEnd": 100
+      "clipBaseEnd": 100,
+      "fullDurationSec": 204.0,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 45.0,
+          "endSec": 100.0
+        }
+      ]
     },
     {
       "id": "song5",
@@ -135,7 +167,7 @@ const DANCE_1_DATA = {
       "youtubeUrl": "https://www.youtube.com/results?search_query=Chunari+Chunari+original+song",
       "startSec": 38,
       "endSec": 92,
-      "durationSec": 54,
+      "durationSec": 54.0,
       "originalBpm": 122,
       "targetBpm": 122,
       "key": "A Minor",
@@ -149,9 +181,17 @@ const DANCE_1_DATA = {
         "name": "High Dhol Roll into Baraat Climax",
         "description": "Rapid Punjabi dhol roll shifting gear into top BPM for the final groom-teasing Bhangra track!"
       },
-      "audioUrl": "./audio/d1/5_5_chunari_chunari.mp3",
+      "audioUrl": "./audio/d1/5_chunari_chunari.mp3",
       "clipBaseStart": 38,
-      "clipBaseEnd": 92
+      "clipBaseEnd": 92,
+      "fullDurationSec": 300.8,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 38.0,
+          "endSec": 92.0
+        }
+      ]
     },
     {
       "id": "song6",
@@ -164,7 +204,7 @@ const DANCE_1_DATA = {
       "youtubeUrl": "https://www.youtube.com/results?search_query=Bhootni+Ke+original+song",
       "startSec": 42,
       "endSec": 98,
-      "durationSec": 56,
+      "durationSec": 56.0,
       "originalBpm": 132,
       "targetBpm": 132,
       "key": "C# Minor / Db Major",
@@ -178,9 +218,17 @@ const DANCE_1_DATA = {
         "name": "Grand Final Freeze & Pyro Cue",
         "description": "Explosive final kick into instant freeze pose with roaring crowd applause!"
       },
-      "audioUrl": "./audio/d1/6_6_bhootni_ke.mp3",
+      "audioUrl": "./audio/d1/6_bhootni_ke.mp3",
       "clipBaseStart": 42,
-      "clipBaseEnd": 98
+      "clipBaseEnd": 98,
+      "fullDurationSec": 305.3,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 42.0,
+          "endSec": 98.0
+        }
+      ]
     }
   ]
 };
@@ -204,7 +252,7 @@ const DANCE_2_DATA = {
       "youtubeUrl": "https://www.youtube.com/watch?v=f92Pa3DWsaw",
       "startSec": 15,
       "endSec": 62,
-      "durationSec": 47,
+      "durationSec": 47.0,
       "originalBpm": 130,
       "targetBpm": 130,
       "key": "A Minor",
@@ -218,9 +266,17 @@ const DANCE_2_DATA = {
         "name": "Dhol Roll into Family Clapping Groove",
         "description": "Smooth 2.0-second crossfade blending modern beats directly into Gallan Goodiyaan!"
       },
-      "audioUrl": "./audio/d2/1_d2_1_veere_di_wedding.mp3",
+      "audioUrl": "./audio/d2/1_veere_di_wedding.mp3",
       "clipBaseStart": 15,
-      "clipBaseEnd": 62
+      "clipBaseEnd": 62,
+      "fullDurationSec": 203.0,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 15.0,
+          "endSec": 62.0
+        }
+      ]
     },
     {
       "id": "d2_song2",
@@ -233,7 +289,7 @@ const DANCE_2_DATA = {
       "youtubeUrl": "https://www.youtube.com/results?search_query=Gallan+Goodiyaan+official+song",
       "startSec": 45,
       "endSec": 95,
-      "durationSec": 50,
+      "durationSec": 50.0,
       "originalBpm": 128,
       "targetBpm": 128,
       "key": "D Major",
@@ -247,9 +303,17 @@ const DANCE_2_DATA = {
         "name": "Snappy Drum Fill into Wedding Thumkas",
         "description": "Seamless 2.0-second beat crossfade into Nachde Ne Saare!"
       },
-      "audioUrl": "./audio/d2/2_d2_2_gallan_goodiyaan.mp3",
+      "audioUrl": "./audio/d2/2_gallan_goodiyaan.mp3",
       "clipBaseStart": 45,
-      "clipBaseEnd": 95
+      "clipBaseEnd": 95,
+      "fullDurationSec": 278.3,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 45.0,
+          "endSec": 95.0
+        }
+      ]
     },
     {
       "id": "d2_song3",
@@ -262,7 +326,7 @@ const DANCE_2_DATA = {
       "youtubeUrl": "https://youtu.be/HgIW7P4dsXU",
       "startSec": 30,
       "endSec": 76,
-      "durationSec": 46,
+      "durationSec": 46.0,
       "originalBpm": 124,
       "targetBpm": 124,
       "key": "F# Minor",
@@ -276,9 +340,17 @@ const DANCE_2_DATA = {
         "name": "Dholak Riser into Queen Groove",
         "description": "Accelerating dholak fill dropping straight into London Thumakda!"
       },
-      "audioUrl": "./audio/d2/3_d2_3_nachde_ne_saare.mp3",
+      "audioUrl": "./audio/d2/3_nachde_ne_saare.mp3",
       "clipBaseStart": 30,
-      "clipBaseEnd": 76
+      "clipBaseEnd": 76,
+      "fullDurationSec": 202.4,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 30.0,
+          "endSec": 76.0
+        }
+      ]
     },
     {
       "id": "d2_song4",
@@ -291,7 +363,7 @@ const DANCE_2_DATA = {
       "youtubeUrl": "https://youtu.be/udra3Mfw2oo",
       "startSec": 22,
       "endSec": 68,
-      "durationSec": 46,
+      "durationSec": 46.0,
       "originalBpm": 130,
       "targetBpm": 130,
       "key": "B Minor",
@@ -305,9 +377,17 @@ const DANCE_2_DATA = {
         "name": "Retro Vinyl Spin into Ding Dong Courtship",
         "description": "DJ spin transition dropping into the flirty retro bounce of Ding Dong Dole!"
       },
-      "audioUrl": "./audio/d2/4_d2_4_london_thumakda.mp3",
+      "audioUrl": "./audio/d2/4_london_thumakda.mp3",
       "clipBaseStart": 22,
-      "clipBaseEnd": 68
+      "clipBaseEnd": 68,
+      "fullDurationSec": 214.5,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 22.0,
+          "endSec": 68.0
+        }
+      ]
     },
     {
       "id": "d2_song6",
@@ -320,7 +400,7 @@ const DANCE_2_DATA = {
       "youtubeUrl": "https://www.youtube.com/results?search_query=Sauda+Khara+Khara+Good+Newwz+official",
       "startSec": 25,
       "endSec": 75,
-      "durationSec": 50,
+      "durationSec": 50.0,
       "originalBpm": 130,
       "targetBpm": 130,
       "key": "F Minor",
@@ -334,9 +414,17 @@ const DANCE_2_DATA = {
         "name": "Explosive Dholak Crash into Bhangra Anthem",
         "description": "Massive dhol crescendo exploding straight into Oh Ho Ho Ho!"
       },
-      "audioUrl": "./audio/d2/5_d2_6_sauda_khara_khara.mp3",
+      "audioUrl": "./audio/d2/5_sauda_khara_khara.mp3",
       "clipBaseStart": 25,
-      "clipBaseEnd": 75
+      "clipBaseEnd": 75,
+      "fullDurationSec": 221.9,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 25.0,
+          "endSec": 75.0
+        }
+      ]
     },
     {
       "id": "d2_song7",
@@ -349,7 +437,7 @@ const DANCE_2_DATA = {
       "youtubeUrl": "https://www.youtube.com/results?search_query=Oh+Ho+Ho+Ho+Ishq+Tera+Tadpave+original",
       "startSec": 15,
       "endSec": 65,
-      "durationSec": 50,
+      "durationSec": 50.0,
       "originalBpm": 136,
       "targetBpm": 136,
       "key": "B Minor",
@@ -363,9 +451,17 @@ const DANCE_2_DATA = {
         "name": "Crowd Cheering & Reverb Outro",
         "description": "Triumphant family celebration finale outro with applause ring-out!"
       },
-      "audioUrl": "./audio/d2/6_d2_7_oh_ho_ho_ho.mp3",
+      "audioUrl": "./audio/d2/6_oh_ho_ho_ho.mp3",
       "clipBaseStart": 15,
-      "clipBaseEnd": 65
+      "clipBaseEnd": 65,
+      "fullDurationSec": 235.2,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 15.0,
+          "endSec": 65.0
+        }
+      ]
     },
     {
       "id": "d2_song5",
@@ -378,7 +474,7 @@ const DANCE_2_DATA = {
       "youtubeUrl": "https://www.youtube.com/results?search_query=Ding+Dong+Dole+original+song",
       "startSec": 35,
       "endSec": 80,
-      "durationSec": 45,
+      "durationSec": 45.0,
       "originalBpm": 126,
       "targetBpm": 126,
       "key": "A Minor",
@@ -392,24 +488,36 @@ const DANCE_2_DATA = {
         "name": "Heavy Sub-Bass Drop into Sauda Khara Khara",
         "description": "Punchy sub-bass sweep into the high-voltage Sukhbir beat!"
       },
-      "audioUrl": "./audio/d2/7_d2_5_ding_dong_dole.mp3",
+      "audioUrl": "./audio/d2/7_ding_dong_dole.mp3",
       "clipBaseStart": 35,
-      "clipBaseEnd": 80
+      "clipBaseEnd": 80,
+      "fullDurationSec": 344.5,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 35.0,
+          "endSec": 80.0
+        }
+      ]
     }
   ]
 };
 
 let project = null;
-let masterPlayer = null;
-let soloPlayer = null;
-let finalePlayer = null;
+let currentDanceId = '1';
 let isSeqPlaying = false;
 let isSoloPlaying = false;
 let currentSeqIndex = 0;
-let currentTrackOffset = 0;
+let currentSeqSegIndex = 0;
 let currentSoloTrackIdx = -1;
+let currentSoloSegIdx = 0;
+let soloTargetEnd = 0;
+let masterPlayer = null;
+let soloPlayer = null;
+let finalePlayer = null;
 let autoSaveTimer = null;
 let bgRemixTimer = null;
+let renderTimer = null;
 
 // Initialize players
 function initAudioPlayers() {
@@ -418,17 +526,18 @@ function initAudioPlayers() {
   if (!finalePlayer) finalePlayer = document.getElementById('finaleAudioPlayer');
 
   if (masterPlayer) {
+    masterPlayer.removeEventListener('timeupdate', onMasterTimeUpdate);
     masterPlayer.addEventListener('timeupdate', onMasterTimeUpdate);
+    masterPlayer.removeEventListener('ended', onMasterTrackEnded);
     masterPlayer.addEventListener('ended', onMasterTrackEnded);
-    masterPlayer.addEventListener('error', (e) => {
-      console.warn('Master player error:', e);
-    });
+    masterPlayer.addEventListener('error', (e) => console.warn('Master player error:', e));
   }
 
   if (soloPlayer) {
-    soloPlayer.addEventListener('ended', () => {
-      stopMasterPlayback();
-    });
+    soloPlayer.removeEventListener('timeupdate', onSoloTimeUpdate);
+    soloPlayer.addEventListener('timeupdate', onSoloTimeUpdate);
+    soloPlayer.removeEventListener('ended', stopMasterPlayback);
+    soloPlayer.addEventListener('ended', stopMasterPlayback);
   }
 }
 
@@ -450,48 +559,52 @@ function calculateTotalDuration() {
   let total = 0;
   for (let i = 0; i < project.items.length; i++) {
     const item = project.items[i];
-    let segDur = Math.max(0, parseFloat(item.endSec) - parseFloat(item.startSec));
-    if (i < project.items.length - 1) {
-      const trans = item.transitionOut || {};
-      const transDur = Math.min(parseFloat(trans.duration || 2.0), segDur * 0.35);
-      total += (segDur - transDur);
-    } else {
-      total += segDur;
-    }
+    const segs = item.segments && item.segments.length ? item.segments : [{ startSec: item.startSec, endSec: item.endSec }];
+    const songCutDur = segs.reduce((acc, s) => acc + Math.max(0, parseFloat(s.endSec) - parseFloat(s.startSec)), 0);
+    const trans = item.transitionOut || {};
+    const transDur = (i < project.items.length - 1) ? Math.min(parseFloat(trans.duration || 2.0), songCutDur * 0.35) : 0;
+    total += Math.max(0, songCutDur - transDur);
   }
-  return total;
+  return Math.max(5, total);
 }
 
 function updateTotalDurationDisplay() {
   const total = calculateTotalDuration();
-  const clock = document.getElementById('totalDurationClock');
-  const fill = document.getElementById('durProgressFill');
-  const nowTime = document.getElementById('playbackTimeText');
-  
-  if (clock) clock.innerText = formatTime(total);
-  if (nowTime && !isSeqPlaying) nowTime.innerText = `00:00 / ${formatTime(total)}`;
-  
-  if (fill) {
-    const pct = Math.min(100, (total / 360) * 100);
-    fill.style.width = `${pct}%`;
-    fill.style.background = (total >= 310 && total <= 340) ? 'var(--emerald-accent)' : 'var(--cyan-accent)';
+  const timeStr = formatTime(total);
+  const durSecEl = document.getElementById('durationSeconds');
+  const durFmtEl = document.getElementById('durationFormatted');
+  const durBarEl = document.getElementById('durationFillBar');
+  const playbackTimeText = document.getElementById('playbackTimeText');
+
+  if (durSecEl) durSecEl.innerText = `${total.toFixed(1)}s`;
+  if (durFmtEl) durFmtEl.innerText = timeStr;
+  if (playbackTimeText && !isSeqPlaying) playbackTimeText.innerText = `00:00 / ${timeStr}`;
+
+  const target = (project && project.targetDurationSec) || 330;
+  const max = (project && project.maxDurationSec) || 360;
+
+  if (durBarEl) {
+    const pct = Math.min(100, (total / max) * 100);
+    durBarEl.style.width = `${pct}%`;
+    if (total > max) durBarEl.style.background = '#ef4444';
+    else if (total >= target - 15 && total <= target + 15) durBarEl.style.background = '#10b981';
+    else durBarEl.style.background = '#f59e0b';
   }
 }
 
-// Auto-save project changes (debounced with danceId validation)
+// Auto-save project changes
 function autoSaveProject() {
   if (currentDanceId === 'finale' || !project || !project.items) return;
 
-  // Safety validation: ensure project items match currentDanceId before saving
   const isDance2 = (String(currentDanceId) === '2');
   const hasD2Items = project.items.some(it => (it.id && it.id.startsWith('d2_')) || (it.fileName && it.fileName.startsWith('d2_')));
   if (isDance2 !== hasD2Items) {
-    console.warn(`[AutoSave] Aborted saving: project items do not match currentDanceId ${currentDanceId}`);
+    console.warn(`[AutoSave] Aborted: project items do not match currentDanceId ${currentDanceId}`);
     return;
   }
 
   try {
-    const localKey = 'dancing_cousins_v3_d' + currentDanceId;
+    const localKey = 'dancing_cousins_v4_d' + currentDanceId;
     localStorage.setItem(localKey, JSON.stringify(project));
   } catch (e) {}
 
@@ -503,42 +616,29 @@ function autoSaveProject() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(project)
       });
-      console.log(`Dance ${currentDanceId} project timeline saved.`);
-    } catch (e) {
-      // Offline / static CDN mode
-    }
-  }, 600);
-}
-
-function triggerBackgroundRemix() {
-  clearTimeout(bgRemixTimer);
-  bgRemixTimer = setTimeout(async () => {
-    try {
-      await fetch(`/api/render?dance=${currentDanceId}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: project.items, dance: currentDanceId })
-      });
+      console.log(`Dance ${currentDanceId} timeline saved to server.`);
     } catch (e) {}
-  }, 1000);
+  }, 600);
 }
 
 // Clean up stale or legacy localStorage keys
 try {
   localStorage.removeItem('dancing_cousins_d1');
   localStorage.removeItem('dancing_cousins_d2');
+  localStorage.removeItem('dancing_cousins_v2_d1');
+  localStorage.removeItem('dancing_cousins_v2_d2');
+  localStorage.removeItem('dancing_cousins_v3_d1');
+  localStorage.removeItem('dancing_cousins_v3_d2');
   localStorage.removeItem('sangeet_project_1');
   localStorage.removeItem('sangeet_project_2');
 } catch (e) {}
 
-// -------------------------------------------------------------
 // Project Load & Tab Switching
-// -------------------------------------------------------------
 async function loadProject(danceId = '1') {
   currentDanceId = String(danceId);
-  project = null; // CRITICAL: Reset project object so new dance loads cleanly!
+  project = null;
 
-  const localKey = 'dancing_cousins_v3_d' + currentDanceId;
+  const localKey = 'dancing_cousins_v4_d' + currentDanceId;
   let loadedFromLocal = false;
 
   try {
@@ -550,7 +650,7 @@ async function loadProject(danceId = '1') {
       if (isDance2 === hasD2Items && parsed.items && parsed.items.length > 0) {
         project = parsed;
         loadedFromLocal = true;
-        console.log(`[LocalStorage] Restored customized Dance ${currentDanceId} timeline (${project.items.length} songs).`);
+        console.log(`[LocalStorage] Restored Dance ${currentDanceId} timeline with ${project.items.length} tracks.`);
       } else {
         localStorage.removeItem(localKey);
       }
@@ -559,7 +659,6 @@ async function loadProject(danceId = '1') {
     try { localStorage.removeItem(localKey); } catch (_) {}
   }
 
-  // If not in localStorage, fetch from API or use high-quality embedded static data
   if (!project) {
     try {
       const res = await fetch(`/api/project?dance=${currentDanceId}`);
@@ -578,11 +677,14 @@ async function loadProject(danceId = '1') {
     }
   }
 
-  // Ensure clip base markers and audioUrl are properly set for each song
+  // Ensure full audioUrl and segments array for each song
   if (project && project.items) {
     project.items.forEach((it, idx) => {
-      if (it.clipBaseStart === undefined) it.clipBaseStart = it.startSec;
-      if (it.clipBaseEnd === undefined) it.clipBaseEnd = it.endSec;
+      if (!it.fullDurationSec) it.fullDurationSec = 240.0;
+      if (!it.segments || !it.segments.length) {
+        it.segments = [{ id: 'seg_1', startSec: parseFloat(it.startSec) || 0, endSec: parseFloat(it.endSec) || 45 }];
+      }
+      it.durationSec = it.segments.reduce((acc, s) => acc + Math.max(0, parseFloat(s.endSec) - parseFloat(s.startSec)), 0);
       if (!it.audioUrl) {
         it.audioUrl = `./audio/d${currentDanceId}/${idx + 1}_${it.fileName}`;
       }
@@ -592,20 +694,6 @@ async function loadProject(danceId = '1') {
   renderTracks();
   updateTotalDurationDisplay();
   currentSeqIndex = 0;
-}
-
-async function saveProject() {
-  if (currentDanceId === 'finale') return;
-  try {
-    const res = await fetch(`/api/project?dance=${currentDanceId}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(project)
-    });
-    alert(`Dance ${currentDanceId} timeline saved successfully!`);
-  } catch (err) {
-    alert('Failed to save project: ' + err.message);
-  }
 }
 
 function switchDanceTab(danceId) {
@@ -665,49 +753,55 @@ function switchDanceTab(danceId) {
   }
 }
 
-// -------------------------------------------------------------
-// Waveform Drawing
-// -------------------------------------------------------------
-function drawWaveform(canvas, startSec, endSec, totalDur = 200) {
-  if (!canvas) return;
+// Waveform Drawing with Multi-Cut Highlights
+function drawWaveform(canvas, segments, totalDur = 240) {
+  if (!canvas || !canvas.getContext) return;
   const ctx = canvas.getContext('2d');
   const width = canvas.width;
   const height = canvas.height;
 
   ctx.clearRect(0, 0, width, height);
 
-  const bars = 90;
+  const bars = 100;
   const barWidth = width / bars;
-  const seed = (startSec * 7 + endSec * 13) % 100;
+  totalDur = Math.max(10, totalDur);
 
   for (let i = 0; i < bars; i++) {
     const t = (i / bars) * totalDur;
-    const isTrimmed = (t >= startSec && t <= endSec);
+    const isInsideCut = segments && segments.some(s => t >= parseFloat(s.startSec) && t <= parseFloat(s.endSec));
     
-    const beat = Math.sin(i * 0.45) * 0.4 + Math.sin(i * 0.12) * 0.3 + 0.3;
-    const noise = (Math.sin(i * 99 + seed) * 0.5 + 0.5) * 0.3;
-    const barHeight = Math.max(4, (beat + noise) * (height - 12));
+    const beat = Math.sin(i * 0.42) * 0.4 + Math.sin(i * 0.15) * 0.3 + 0.3;
+    const noise = (Math.sin(i * 99 + 37) * 0.5 + 0.5) * 0.3;
+    const barHeight = Math.max(4, (beat + noise) * (height - 14));
 
-    ctx.fillStyle = isTrimmed ? '#06b6d4' : '#223045';
+    ctx.fillStyle = isInsideCut ? '#22d3ee' : '#1e293b';
     const y = (height - barHeight) / 2;
     ctx.fillRect(i * barWidth, y, barWidth - 1, barHeight);
   }
 
-  // Highlight Trim Window Overlay
-  const startX = Math.min(width, Math.max(0, (startSec / totalDur) * width));
-  const endX = Math.min(width, Math.max(0, (endSec / totalDur) * width));
+  // Overlay highlight for every segment in segments
+  if (segments && segments.length) {
+    segments.forEach((seg, sIdx) => {
+      const startX = Math.min(width, Math.max(0, (parseFloat(seg.startSec) / totalDur) * width));
+      const endX = Math.min(width, Math.max(0, (parseFloat(seg.endSec) / totalDur) * width));
+      const segWidth = Math.max(3, endX - startX);
 
-  ctx.fillStyle = 'rgba(6, 182, 212, 0.15)';
-  ctx.fillRect(startX, 0, Math.max(2, endX - startX), height);
+      ctx.fillStyle = 'rgba(34, 211, 238, 0.18)';
+      ctx.fillRect(startX, 0, segWidth, height);
 
-  ctx.strokeStyle = '#f59e0b';
-  ctx.lineWidth = 2;
-  ctx.strokeRect(startX, 0, Math.max(2, endX - startX), height);
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(startX, 0, segWidth, height);
+
+      // Label cut
+      ctx.fillStyle = '#f59e0b';
+      ctx.font = '9px monospace';
+      ctx.fillText(`Cut #${sIdx + 1}`, startX + 4, 12);
+    });
+  }
 }
 
-// -------------------------------------------------------------
-// Render Track Cards
-// -------------------------------------------------------------
+// Render Track Cards with Multi-Segment Trimming Controls
 function renderTracks() {
   const container = document.getElementById('tracksContainer');
   if (!container || !project) return;
@@ -718,7 +812,41 @@ function renderTracks() {
     card.className = 'track-card';
     card.id = `trackCard_${idx}`;
 
-    const segDuration = Math.max(0, item.endSec - item.startSec).toFixed(1);
+    if (!item.segments || !item.segments.length) {
+      item.segments = [{ id: 'seg_1', startSec: parseFloat(item.startSec) || 0, endSec: parseFloat(item.endSec) || 45 }];
+    }
+    const totalCutDur = item.segments.reduce((acc, s) => acc + Math.max(0, parseFloat(s.endSec) - parseFloat(s.startSec)), 0);
+    item.durationSec = totalCutDur;
+
+    // Build Cut Segments HTML
+    let segmentsHtml = '';
+    item.segments.forEach((seg, segIdx) => {
+      const segDur = Math.max(0, parseFloat(seg.endSec) - parseFloat(seg.startSec)).toFixed(1);
+      segmentsHtml += `
+        <div class="segment-row" id="segRow_${idx}_${segIdx}">
+          <span class="seg-badge">Cut #${segIdx + 1}</span>
+          <div class="seg-input-group">
+            <label>Start (s):</label>
+            <input type="number" step="0.5" min="0" max="${item.fullDurationSec}" value="${seg.startSec}"
+                   onchange="updateSegmentTime(${idx}, ${segIdx}, 'start', this.value)" title="Exact start in full song">
+          </div>
+          <div class="seg-input-group">
+            <label>End (s):</label>
+            <input type="number" step="0.5" min="0" max="${item.fullDurationSec}" value="${seg.endSec}"
+                   onchange="updateSegmentTime(${idx}, ${segIdx}, 'end', this.value)" title="Exact end in full song">
+          </div>
+          <span class="seg-dur-badge" id="segDur_${idx}_${segIdx}">${segDur}s</span>
+          <button class="btn btn-secondary btn-icon-xs" onclick="previewCutSegment(${idx}, ${segIdx})" title="Play just this cut">
+            ▶ Cut
+          </button>
+          ${item.segments.length > 1 ? `
+            <button class="btn btn-icon-xs btn-del-seg" onclick="removeSegment(${idx}, ${segIdx})" title="Delete this cut window">
+              ✕
+            </button>
+          ` : ''}
+        </div>
+      `;
+    });
 
     card.innerHTML = `
       <div class="track-header">
@@ -726,14 +854,17 @@ function renderTracks() {
           <span class="track-order-badge">#${idx + 1}</span>
           <div class="track-title-group">
             <h3>${item.title} <a href="${item.youtubeUrl}" target="_blank" class="track-source-link" title="Official YouTube Reference">↗ YouTube</a></h3>
-            <span class="movie-singer">${item.movie} • <strong>${item.singer || 'Original Recording'}</strong> (${item.originalBpm} BPM | ${item.key || ''})</span>
+            <span class="movie-singer">
+              ${item.movie} • <strong>${item.singer || 'Original Recording'}</strong> (${item.originalBpm} BPM)
+              <span class="full-song-badge">Full Song: ${formatTime(item.fullDurationSec)}</span>
+            </span>
           </div>
         </div>
         <div class="track-actions-right">
-          <button class="btn-icon-sm" onclick="moveTrack(${idx}, -1)" ${idx === 0 ? 'disabled' : ''} title="Move Up (Play earlier)">▲ Move Up</button>
-          <button class="btn-icon-sm" onclick="moveTrack(${idx}, 1)" ${idx === project.items.length - 1 ? 'disabled' : ''} title="Move Down (Play later)">▼ Move Down</button>
+          <button class="btn-icon-sm" onclick="moveTrack(${idx}, -1)" ${idx === 0 ? 'disabled' : ''} title="Move Up (Play earlier)">▲ Up</button>
+          <button class="btn-icon-sm" onclick="moveTrack(${idx}, 1)" ${idx === project.items.length - 1 ? 'disabled' : ''} title="Move Down (Play later)">▼ Down</button>
           <button class="btn btn-secondary btn-icon-sm" onclick="playSoloTrack(${idx})" id="btnSolo_${idx}" style="font-weight: 700; color: #22d3ee; border-color: #22d3ee;">
-            ▶ Solo Cut
+            ▶ Play Full Cut
           </button>
           <button class="btn-icon-sm" onclick="removeTrack(${idx})" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.4);" title="Remove Song">
             🗑️ Remove
@@ -745,95 +876,104 @@ function renderTracks() {
         <canvas class="waveform-canvas" id="canvas_${idx}" width="900" height="72"></canvas>
       </div>
 
-      <div class="track-controls-grid">
-        <div class="control-item">
-          <label>Start (seconds)</label>
-          <input type="number" step="0.5" id="startInput_${idx}" value="${item.startSec}" 
-                 onchange="updateTrackTrim(${idx}, 'start', this.value)" title="Exact start second">
+      <!-- Multi-Segment Trimming Section -->
+      <div class="multi-segments-panel">
+        <div class="segments-list" id="segmentsList_${idx}">
+          ${segmentsHtml}
         </div>
-        <div class="control-item">
-          <label>End (seconds)</label>
-          <input type="number" step="0.5" id="endInput_${idx}" value="${item.endSec}" 
-                 onchange="updateTrackTrim(${idx}, 'end', this.value)" title="Exact end second">
-        </div>
-        <div class="control-item">
-          <label>Duration</label>
-          <span class="badge-tag" id="durBadge_${idx}" style="font-weight: 700; color: #f59e0b;">${segDuration}s (${formatTime(segDuration)})</span>
-        </div>
-        <div class="control-item">
-          <label>BPM (${item.targetBpm || item.originalBpm})</label>
-          <input type="range" min="${item.originalBpm - 15}" max="${item.originalBpm + 15}" value="${item.targetBpm || item.originalBpm}" oninput="updateTrackBpm(${idx}, this.value)">
-        </div>
-        <div class="control-item">
-          <label>Gain (${item.volumeDb || 0} dB)</label>
-          <input type="range" min="-12" max="6" step="0.5" value="${item.volumeDb || 0}" oninput="updateTrackGain(${idx}, this.value)">
-        </div>
-        <div class="control-item">
-          <label>Assigned Audio</label>
-          <span class="badge-tag" style="color: #22d3ee; font-size: 0.75rem;">${item.fileName || item.filePath}</span>
+        <div class="segments-actions-footer">
+          <button class="btn btn-outline btn-icon-sm btn-add-seg" onclick="addSegment(${idx})" title="Add another section from this song (e.g. 20-30s and 50-70s)">
+            ➕ Add Another Cut Window (e.g. 50s - 70s)
+          </button>
+          <div class="song-total-cut-badge">
+            Total Cut in Mashup: <strong id="songTotalDur_${idx}" style="color: #f59e0b;">${totalCutDur.toFixed(1)}s</strong> (${formatTime(totalCutDur)})
+          </div>
         </div>
       </div>
 
       <div class="dance-cues-tip">
-        <strong>💃 Choreography Cue:</strong> ${item.danceCues || 'Synchronized group moves with energetic footwork.'}
+        <strong>Choreography Cue:</strong> ${item.danceCues || 'Synchronized signature hook step for wedding dance.'}
       </div>
     `;
 
     container.appendChild(card);
 
-    // Draw waveform
+    // Draw waveform with multi-cut highlights
     setTimeout(() => {
       const cvs = document.getElementById(`canvas_${idx}`);
-      drawWaveform(cvs, item.startSec, item.endSec, 200);
-    }, 10);
-
-    // Transition Bridge Card
-    if (idx < project.items.length - 1) {
-      const trans = item.transitionOut || { type: 'crossfade', duration: 2.0 };
-      const transBridge = document.createElement('div');
-      transBridge.className = 'transition-bridge-card';
-      
-      let icon = '🎚️';
-      if (trans.type === 'dhol_drop') icon = '🥁';
-      else if (trans.type === 'scratch' || trans.type === 'scratch_drop') icon = '⚡';
-      else if (trans.type === 'riser' || trans.type === 'riser_drop') icon = '🚀';
-      else if (trans.type === 'bass_drop') icon = '🔊';
-      else if (trans.type === 'drum_fill') icon = '🪘';
-
-      transBridge.innerHTML = `
-        <div class="transition-info">
-          <span class="trans-icon">${icon}</span>
-          <div class="trans-desc">
-            <h5>TRANSITION INTO TRACK #${idx + 2}: ${trans.name || trans.type.toUpperCase()}</h5>
-            <p>${trans.description || 'Beat-matched blend into next track'}</p>
-          </div>
-        </div>
-        <div class="trans-controls">
-          <select onchange="updateTransitionType(${idx}, this.value)">
-            <option value="dhol_drop" ${trans.type === 'dhol_drop' ? 'selected' : ''}>🥁 Punjabi Dhol Roll & Sub-Drop</option>
-            <option value="bass_drop" ${trans.type === 'bass_drop' ? 'selected' : ''}>🔊 Heavy Sub-Bass Drop</option>
-            <option value="drum_fill" ${trans.type === 'drum_fill' ? 'selected' : ''}>🪘 Snappy Drum Fill</option>
-            <option value="scratch_drop" ${trans.type === 'scratch_drop' ? 'selected' : ''}>⚡ DJ Vinyl Scratch Spinback</option>
-            <option value="riser_drop" ${trans.type === 'riser_drop' ? 'selected' : ''}>🚀 Percussion / EDM Riser Drop</option>
-            <option value="crossfade" ${trans.type === 'crossfade' ? 'selected' : ''}>🎚️ Beat-Locked Smooth Crossfade</option>
-          </select>
-          <select onchange="updateTransitionDuration(${idx}, this.value)">
-            <option value="1.0" ${trans.duration == 1.0 ? 'selected' : ''}>1.0s</option>
-            <option value="1.5" ${trans.duration == 1.5 ? 'selected' : ''}>1.5s</option>
-            <option value="2.0" ${trans.duration == 2.0 ? 'selected' : ''}>2.0s</option>
-            <option value="2.5" ${trans.duration == 2.5 ? 'selected' : ''}>2.5s</option>
-            <option value="3.0" ${trans.duration == 3.0 ? 'selected' : ''}>3.0s</option>
-          </select>
-        </div>
-      `;
-      container.appendChild(transBridge);
-    }
+      if (cvs) drawWaveform(cvs, item.segments, item.fullDurationSec);
+    }, 0);
   });
 }
 
-// -------------------------------------------------------------
-// TRACK MOVING & REORDERING (100% Immediate Live Playback Sync)
-// -------------------------------------------------------------
+// Multi-Segment Functions
+function updateSegmentTime(trackIdx, segIdx, field, val) {
+  val = Math.max(0, parseFloat(val) || 0);
+  const item = project.items[trackIdx];
+  if (!item || !item.segments || !item.segments[segIdx]) return;
+
+  const seg = item.segments[segIdx];
+  if (field === 'start') {
+    seg.startSec = Math.min(val, Math.max(0, parseFloat(seg.endSec) - 0.5));
+  } else {
+    seg.endSec = Math.max(val, parseFloat(seg.startSec) + 0.5);
+  }
+
+  // Update track duration
+  item.durationSec = item.segments.reduce((acc, s) => acc + Math.max(0, parseFloat(s.endSec) - parseFloat(s.startSec)), 0);
+  item.startSec = item.segments[0].startSec;
+  item.endSec = item.segments[item.segments.length - 1].endSec;
+
+  const segDurBadge = document.getElementById(`segDur_${trackIdx}_${segIdx}`);
+  if (segDurBadge) segDurBadge.innerText = `${(seg.endSec - seg.startSec).toFixed(1)}s`;
+
+  const totalDurBadge = document.getElementById(`songTotalDur_${trackIdx}`);
+  if (totalDurBadge) totalDurBadge.innerText = `${item.durationSec.toFixed(1)}s`;
+
+  const cvs = document.getElementById(`canvas_${trackIdx}`);
+  if (cvs) drawWaveform(cvs, item.segments, item.fullDurationSec);
+
+  updateTotalDurationDisplay();
+  autoSaveProject();
+
+  // If currently solo playing, restart solo preview at current cut
+  if (isSoloPlaying && currentSoloTrackIdx === trackIdx) {
+    playSoloTrack(trackIdx);
+  }
+}
+
+function addSegment(trackIdx) {
+  const item = project.items[trackIdx];
+  if (!item) return;
+  if (!item.segments) item.segments = [];
+
+  const lastSeg = item.segments[item.segments.length - 1];
+  const maxDur = item.fullDurationSec || 240;
+  const newStart = Math.min(maxDur - 10, (lastSeg ? parseFloat(lastSeg.endSec) + 10 : 20));
+  const newEnd = Math.min(maxDur, newStart + 20);
+
+  item.segments.push({
+    id: 'seg_' + Date.now(),
+    startSec: parseFloat(newStart.toFixed(1)),
+    endSec: parseFloat(newEnd.toFixed(1))
+  });
+
+  renderTracks();
+  updateTotalDurationDisplay();
+  autoSaveProject();
+}
+
+function removeSegment(trackIdx, segIdx) {
+  const item = project.items[trackIdx];
+  if (!item || !item.segments || item.segments.length <= 1) return;
+
+  item.segments.splice(segIdx, 1);
+  renderTracks();
+  updateTotalDurationDisplay();
+  autoSaveProject();
+}
+
+// Track Moving
 function moveTrack(idx, dir) {
   const targetIdx = idx + dir;
   if (targetIdx < 0 || targetIdx >= project.items.length) return;
@@ -843,23 +983,20 @@ function moveTrack(idx, dir) {
   project.items[targetIdx] = temp;
   project.items.forEach((it, i) => it.order = i + 1);
 
-  // If mashup playback was currently running, immediately restart playing with the new track at #1!
+  renderTracks();
+  updateTotalDurationDisplay();
+  autoSaveProject();
+
   if (isSeqPlaying) {
-    renderTracks();
-    updateTotalDurationDisplay();
-    autoSaveProject();
     playSequenceTrack(0, 0);
   } else {
     currentSeqIndex = 0;
-    renderTracks();
-    updateTotalDurationDisplay();
-    autoSaveProject();
   }
 }
 
 function removeTrack(idx) {
   const item = project.items[idx];
-  if (!confirm(`Are you sure you want to remove "${item.title}" from Dance ${currentDanceId}?\n\nThe mashup will automatically update and play without this song.`)) {
+  if (!confirm(`Are you sure you want to remove "${item.title}" from Dance ${currentDanceId}?`)) {
     return;
   }
   const wasPlaying = isSeqPlaying;
@@ -876,69 +1013,14 @@ function removeTrack(idx) {
   }
 }
 
-function updateTrackTrim(idx, type, val) {
-  val = parseFloat(val);
-  if (isNaN(val) || val < 0) val = 0;
-  
-  if (type === 'start') {
-    project.items[idx].startSec = val;
-  } else {
-    project.items[idx].endSec = val;
-  }
-
-  const segDuration = Math.max(0, project.items[idx].endSec - project.items[idx].startSec).toFixed(1);
-  const durBadge = document.getElementById(`durBadge_${idx}`);
-  if (durBadge) durBadge.innerText = `${segDuration}s (${formatTime(segDuration)})`;
-
-  const cvs = document.getElementById(`canvas_${idx}`);
-  if (cvs) drawWaveform(cvs, project.items[idx].startSec, project.items[idx].endSec, 200);
-
-  updateTotalDurationDisplay();
-  autoSaveProject();
-
-  // If this track was currently solo playing, restart solo cut at the new trim!
-  if (isSoloPlaying && currentSoloTrackIdx === idx) {
-    playSoloTrack(idx);
-  }
-}
-
-function updateTrackBpm(idx, val) {
-  project.items[idx].targetBpm = parseInt(val);
-  autoSaveProject();
-}
-
-function updateTrackGain(idx, val) {
-  project.items[idx].volumeDb = parseFloat(val);
-  autoSaveProject();
-}
-
-function updateTransitionType(idx, type) {
-  if (!project.items[idx].transitionOut) project.items[idx].transitionOut = {};
-  project.items[idx].transitionOut.type = type;
-  autoSaveProject();
-}
-
-function updateTransitionDuration(idx, dur) {
-  if (!project.items[idx].transitionOut) project.items[idx].transitionOut = {};
-  project.items[idx].transitionOut.duration = parseFloat(dur);
-  updateTotalDurationDisplay();
-  autoSaveProject();
-}
-
-// -------------------------------------------------------------
-// DYNAMIC MASHUP AUDIO PLAYBACK ENGINE
-// -------------------------------------------------------------
+// Playback Engine
 function stopMasterPlayback() {
   isSeqPlaying = false;
   isSoloPlaying = false;
   currentSoloTrackIdx = -1;
 
-  if (masterPlayer) {
-    masterPlayer.pause();
-  }
-  if (soloPlayer) {
-    soloPlayer.pause();
-  }
+  if (masterPlayer) masterPlayer.pause();
+  if (soloPlayer) soloPlayer.pause();
 
   const icon = document.getElementById('masterPlayIcon');
   if (icon) icon.innerText = '▶';
@@ -947,7 +1029,7 @@ function stopMasterPlayback() {
   if (nowBadge) nowBadge.innerText = 'STOPPED:';
 
   document.querySelectorAll('.btn-icon-sm').forEach(b => {
-    if (b.innerText.includes('Stop')) b.innerText = '▶ Solo Cut';
+    if (b.innerText.includes('Stop')) b.innerText = '▶ Play Full Cut';
   });
   document.querySelectorAll('.track-card').forEach(c => c.classList.remove('is-playing'));
 }
@@ -955,7 +1037,6 @@ function stopMasterPlayback() {
 function toggleMasterPlay() {
   initAudioPlayers();
   if (isSeqPlaying) {
-    // Pause playback
     if (masterPlayer) masterPlayer.pause();
     isSeqPlaying = false;
     const icon = document.getElementById('masterPlayIcon');
@@ -963,32 +1044,18 @@ function toggleMasterPlay() {
     const nowBadge = document.getElementById('nowBadgeText');
     if (nowBadge) nowBadge.innerText = 'PAUSED:';
   } else {
-    // If audio is paused mid-track, resume it; else start from currentSeqIndex
-    if (masterPlayer && masterPlayer.src && masterPlayer.currentTime > 0 && !masterPlayer.ended) {
-      masterPlayer.volume = getMasterVolume();
-      masterPlayer.play().then(() => {
-        isSeqPlaying = true;
-        const icon = document.getElementById('masterPlayIcon');
-        if (icon) icon.innerText = '⏸';
-        const nowBadge = document.getElementById('nowBadgeText');
-        if (nowBadge) nowBadge.innerText = `PLAYING #${currentSeqIndex + 1}:`;
-      }).catch(err => {
-        console.warn('Resume failed, restarting track:', err);
-        playSequenceTrack(currentSeqIndex || 0, 0);
-      });
-    } else {
-      playSequenceTrack(currentSeqIndex || 0, 0);
-    }
+    playSequenceTrack(currentSeqIndex || 0, 0);
   }
 }
 
-function playSequenceTrack(index, offset = 0) {
+function playSequenceTrack(trackIndex, segIndex = 0) {
   initAudioPlayers();
   if (!project || !project.items || project.items.length === 0) return;
-  
-  if (index >= project.items.length) {
+
+  if (trackIndex >= project.items.length) {
     stopMasterPlayback();
     currentSeqIndex = 0;
+    currentSeqSegIndex = 0;
     const playhead = document.getElementById('masterPlayhead');
     if (playhead) playhead.style.left = '0%';
     const nowTime = document.getElementById('playbackTimeText');
@@ -998,25 +1065,25 @@ function playSequenceTrack(index, offset = 0) {
     return;
   }
 
-  // Stop any solo preview
   if (soloPlayer) {
     soloPlayer.pause();
     isSoloPlaying = false;
     currentSoloTrackIdx = -1;
     document.querySelectorAll('.btn-icon-sm').forEach(b => {
-      if (b.innerText.includes('Stop')) b.innerText = '▶ Solo Cut';
+      if (b.innerText.includes('Stop')) b.innerText = '▶ Play Full Cut';
     });
   }
 
   isSeqPlaying = true;
-  currentSeqIndex = index;
-  currentTrackOffset = offset;
+  currentSeqIndex = trackIndex;
+  currentSeqSegIndex = segIndex;
 
-  const item = project.items[index];
+  const item = project.items[trackIndex];
+  const segs = item.segments && item.segments.length ? item.segments : [{ startSec: item.startSec, endSec: item.endSec }];
+  const curSeg = segs[segIndex] || segs[0];
 
-  // Highlight track in UI
   document.querySelectorAll('.track-card').forEach((c, i) => {
-    if (i === index) {
+    if (i === trackIndex) {
       c.classList.add('is-playing');
       c.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } else {
@@ -1028,31 +1095,18 @@ function playSequenceTrack(index, offset = 0) {
   const nowPlaying = document.getElementById('nowPlayingText');
   const playIcon = document.getElementById('masterPlayIcon');
 
-  if (nowBadge) nowBadge.innerText = `PLAYING #${index + 1}:`;
-  if (nowPlaying) nowPlaying.innerText = `${item.title} (${item.singer || item.movie})`;
+  if (nowBadge) nowBadge.innerText = `PLAYING #${trackIndex + 1} (Cut ${segIndex + 1}/${segs.length}):`;
+  if (nowPlaying) nowPlaying.innerText = `${item.title} (${item.singer || item.movie}) [${curSeg.startSec}s - ${curSeg.endSec}s]`;
   if (playIcon) playIcon.innerText = '⏸';
 
-  const audioSrc = item.audioUrl || `./audio/d${currentDanceId}/${index + 1}_${item.fileName}`;
-  masterPlayer.src = audioSrc;
+  const audioSrc = item.audioUrl || `./audio/d${currentDanceId}/${trackIndex + 1}_${item.fileName}`;
+  if (masterPlayer.src !== new URL(audioSrc, window.location.href).href) {
+    masterPlayer.src = audioSrc;
+  }
   masterPlayer.volume = getMasterVolume();
 
-  const clipBase = parseFloat(item.clipBaseStart !== undefined ? item.clipBaseStart : item.startSec);
-  const startOffset = Math.max(0, parseFloat(item.startSec) - clipBase) + offset;
-  const targetEndOffset = Math.max(startOffset + 1, parseFloat(item.endSec) - clipBase);
-
-  masterPlayer.onloadedmetadata = () => {
-    if (startOffset > 0) {
-      masterPlayer.currentTime = startOffset;
-    }
-  };
-
-  masterPlayer.ontimeupdate = () => {
-    if (!isSeqPlaying || currentSeqIndex !== index) return;
-    onMasterTimeUpdate();
-    if (masterPlayer.currentTime >= targetEndOffset) {
-      onMasterTrackEnded();
-    }
-  };
+  const seekTo = Math.max(0, parseFloat(curSeg.startSec));
+  masterPlayer.currentTime = seekTo;
 
   const playPromise = masterPlayer.play();
   if (playPromise !== undefined) {
@@ -1064,23 +1118,51 @@ function playSequenceTrack(index, offset = 0) {
 }
 
 function onMasterTrackEnded() {
-  if (!isSeqPlaying) return;
-  // Automatically advance to the next song in the sequence!
-  playSequenceTrack(currentSeqIndex + 1, 0);
+  if (!isSeqPlaying || !project || !project.items) return;
+  const item = project.items[currentSeqIndex];
+  const segs = item.segments && item.segments.length ? item.segments : [{ startSec: item.startSec, endSec: item.endSec }];
+
+  if (currentSeqSegIndex + 1 < segs.length) {
+    // Advance to next cut within same song
+    playSequenceTrack(currentSeqIndex, currentSeqSegIndex + 1);
+  } else {
+    // Advance to next song in mashup
+    playSequenceTrack(currentSeqIndex + 1, 0);
+  }
 }
 
 function onMasterTimeUpdate() {
   if (!isSeqPlaying || !project || !project.items) return;
-  
+  const item = project.items[currentSeqIndex];
+  if (!item) return;
+
+  const segs = item.segments && item.segments.length ? item.segments : [{ startSec: item.startSec, endSec: item.endSec }];
+  const curSeg = segs[currentSeqSegIndex];
+
+  // If current segment ends, jump to next segment or next song!
+  if (curSeg && masterPlayer.currentTime >= parseFloat(curSeg.endSec)) {
+    onMasterTrackEnded();
+    return;
+  }
+
+  // Calculate total elapsed across all songs and previous cuts
   let elapsed = 0;
   for (let i = 0; i < currentSeqIndex; i++) {
-    const item = project.items[i];
-    const segDur = Math.max(0, parseFloat(item.endSec) - parseFloat(item.startSec));
-    const trans = item.transitionOut || {};
-    const transDur = (i < project.items.length - 1) ? Math.min(parseFloat(trans.duration || 2.0), segDur * 0.35) : 0;
-    elapsed += (segDur - transDur);
+    const it = project.items[i];
+    const sList = it.segments || [{ startSec: it.startSec, endSec: it.endSec }];
+    const songDur = sList.reduce((acc, s) => acc + Math.max(0, parseFloat(s.endSec) - parseFloat(s.startSec)), 0);
+    const trans = it.transitionOut || {};
+    const transDur = (i < project.items.length - 1) ? Math.min(parseFloat(trans.duration || 2.0), songDur * 0.35) : 0;
+    elapsed += (songDur - transDur);
   }
-  elapsed += (currentTrackOffset + (masterPlayer ? masterPlayer.currentTime : 0));
+
+  for (let s = 0; s < currentSeqSegIndex; s++) {
+    elapsed += Math.max(0, parseFloat(segs[s].endSec) - parseFloat(segs[s].startSec));
+  }
+
+  if (curSeg) {
+    elapsed += Math.max(0, masterPlayer.currentTime - parseFloat(curSeg.startSec));
+  }
 
   const totalDur = calculateTotalDuration();
   const pct = Math.min(100, Math.max(0, (elapsed / totalDur) * 100));
@@ -1092,62 +1174,7 @@ function onMasterTimeUpdate() {
   if (nowTime) nowTime.innerText = `${formatTime(elapsed)} / ${formatTime(totalDur)}`;
 }
 
-// Scrubber seeking across full mashup duration
-function seekMasterAudioByPct(pct) {
-  if (!project || !project.items || project.items.length === 0) return;
-  const totalDur = calculateTotalDuration();
-  const targetSec = Math.max(0, Math.min(totalDur, pct * totalDur));
-
-  // Determine which track index covers targetSec
-  let accumulated = 0;
-  for (let i = 0; i < project.items.length; i++) {
-    const item = project.items[i];
-    const segDur = Math.max(0, item.endSec - item.startSec);
-    const trans = item.transitionOut || {};
-    const transDur = (i < project.items.length - 1) ? Math.min(parseFloat(trans.duration || 2.0), segDur * 0.35) : 0;
-    const trackSpan = segDur - transDur;
-
-    if (targetSec <= accumulated + trackSpan || i === project.items.length - 1) {
-      const offsetInTrack = targetSec - accumulated;
-      playSequenceTrack(i, offsetInTrack);
-      return;
-    }
-    accumulated += trackSpan;
-  }
-}
-
-// Re-mix on demand via FFmpeg master build
-async function reMixAndPlay() {
-  stopMasterPlayback();
-  const btn = document.getElementById('btnReMix');
-  const oldText = btn.innerHTML;
-  btn.innerHTML = '<span>⏳</span> Mixing...';
-  btn.disabled = true;
-
-  try {
-    const res = await fetch(`/api/render?dance=${currentDanceId}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: project.items, dance: currentDanceId })
-    });
-    const result = await res.json();
-    if (result.status === 'success') {
-      console.log('Re-mix successful! Master mix updated.');
-      playSequenceTrack(0, 0);
-    } else {
-      alert('Mix Error: ' + (result.error || 'Unknown error'));
-    }
-  } catch (e) {
-    alert('Re-Mix request failed: ' + e.message);
-  } finally {
-    btn.innerHTML = oldText;
-    btn.disabled = false;
-  }
-}
-
-// -------------------------------------------------------------
-// SOLO CUT AUDITIONING
-// -------------------------------------------------------------
+// Solo Cut Auditioning
 function playSoloTrack(idx) {
   initAudioPlayers();
   const item = project.items[idx];
@@ -1161,28 +1188,16 @@ function playSoloTrack(idx) {
   stopMasterPlayback();
   isSoloPlaying = true;
   currentSoloTrackIdx = idx;
+  currentSoloSegIdx = 0;
+
+  const segs = item.segments && item.segments.length ? item.segments : [{ startSec: item.startSec, endSec: item.endSec }];
+  const curSeg = segs[0];
+  soloTargetEnd = parseFloat(curSeg.endSec);
 
   const audioSrc = item.audioUrl || `./audio/d${currentDanceId}/${idx + 1}_${item.fileName}`;
   soloPlayer.src = audioSrc;
   soloPlayer.volume = getMasterVolume();
-
-  const clipBase = parseFloat(item.clipBaseStart !== undefined ? item.clipBaseStart : item.startSec);
-  const startOffset = Math.max(0, parseFloat(item.startSec) - clipBase);
-  const targetEndOffset = Math.max(startOffset + 1, parseFloat(item.endSec) - clipBase);
-
-  soloPlayer.onloadedmetadata = () => {
-    if (startOffset > 0) {
-      soloPlayer.currentTime = startOffset;
-    }
-  };
-
-  soloPlayer.ontimeupdate = () => {
-    if (isSoloPlaying && currentSoloTrackIdx === idx) {
-      if (soloPlayer.currentTime >= targetEndOffset) {
-        stopMasterPlayback();
-      }
-    }
-  };
+  soloPlayer.currentTime = parseFloat(curSeg.startSec);
 
   const playPromise = soloPlayer.play();
   if (playPromise !== undefined) {
@@ -1194,18 +1209,63 @@ function playSoloTrack(idx) {
       const nowBadge = document.getElementById('nowBadgeText');
       if (nowBadge) nowBadge.innerText = 'SOLO PREVIEW:';
       const nowPlaying = document.getElementById('nowPlayingText');
-      if (nowPlaying) nowPlaying.innerText = `Track #${idx + 1}: ${item.title} (${item.singer || item.movie})`;
+      if (nowPlaying) nowPlaying.innerText = `Track #${idx + 1}: ${item.title} (Cut 1/${segs.length}: ${curSeg.startSec}s - ${curSeg.endSec}s)`;
     }).catch(e => {
       console.warn('Solo cut playback failed:', e);
-      const nowPlaying = document.getElementById('nowPlayingText');
-      if (nowPlaying) nowPlaying.innerText = `[Tap again to play] ${item.title}`;
     });
   }
 }
 
-// -------------------------------------------------------------
-// GRAND FINALE PLAYER LOGIC (Deewangi Deewangi Full Track)
-// -------------------------------------------------------------
+function previewCutSegment(trackIdx, segIdx) {
+  initAudioPlayers();
+  const item = project.items[trackIdx];
+  if (!item || !item.segments || !item.segments[segIdx]) return;
+
+  stopMasterPlayback();
+  isSoloPlaying = true;
+  currentSoloTrackIdx = trackIdx;
+  currentSoloSegIdx = segIdx;
+
+  const curSeg = item.segments[segIdx];
+  soloTargetEnd = parseFloat(curSeg.endSec);
+
+  const audioSrc = item.audioUrl || `./audio/d${currentDanceId}/${trackIdx + 1}_${item.fileName}`;
+  soloPlayer.src = audioSrc;
+  soloPlayer.volume = getMasterVolume();
+  soloPlayer.currentTime = parseFloat(curSeg.startSec);
+
+  soloPlayer.play().then(() => {
+    const nowBadge = document.getElementById('nowBadgeText');
+    if (nowBadge) nowBadge.innerText = 'CUT PREVIEW:';
+    const nowPlaying = document.getElementById('nowPlayingText');
+    if (nowPlaying) nowPlaying.innerText = `Auditioning Cut #${segIdx + 1} of ${item.title} (${curSeg.startSec}s - ${curSeg.endSec}s)`;
+  }).catch(e => console.warn('Preview failed:', e));
+}
+
+function onSoloTimeUpdate() {
+  if (!isSoloPlaying || currentSoloTrackIdx === -1) return;
+  const item = project.items[currentSoloTrackIdx];
+  if (!item) return;
+
+  const segs = item.segments && item.segments.length ? item.segments : [{ startSec: item.startSec, endSec: item.endSec }];
+  const curSeg = segs[currentSoloSegIdx];
+
+  if (curSeg && soloPlayer.currentTime >= parseFloat(curSeg.endSec)) {
+    if (currentSoloSegIdx + 1 < segs.length) {
+      // Jump to next cut within this song
+      currentSoloSegIdx++;
+      const nextSeg = segs[currentSoloSegIdx];
+      soloTargetEnd = parseFloat(nextSeg.endSec);
+      soloPlayer.currentTime = parseFloat(nextSeg.startSec);
+      const nowPlaying = document.getElementById('nowPlayingText');
+      if (nowPlaying) nowPlaying.innerText = `Track #${currentSoloTrackIdx + 1}: ${item.title} (Cut ${currentSoloSegIdx + 1}/${segs.length}: ${nextSeg.startSec}s - ${nextSeg.endSec}s)`;
+    } else {
+      stopMasterPlayback();
+    }
+  }
+}
+
+// Grand Finale Player
 function initFinalePlayer() {
   finalePlayer = document.getElementById('finaleAudioPlayer');
   if (!finalePlayer) return;
@@ -1222,7 +1282,7 @@ function initFinalePlayer() {
     if (curTime) curTime.innerText = formatTime(cur);
 
     const totTime = document.getElementById('finaleTotalTime');
-    if (totTime && finalePlayer.duration) totTime.innerText = formatTime(dur);
+    if (totTime) totTime.innerText = formatTime(dur);
   });
 
   finalePlayer.addEventListener('ended', () => {
@@ -1239,9 +1299,7 @@ function toggleFinalePlay() {
   if (finalePlayer.paused) {
     finalePlayer.play().then(() => {
       if (playIcon) playIcon.innerText = '⏸';
-    }).catch(err => {
-      console.error('Finale audio play failed:', err);
-    });
+    }).catch(err => console.error('Finale audio play failed:', err));
   } else {
     finalePlayer.pause();
     if (playIcon) playIcon.innerText = '▶';
@@ -1265,11 +1323,7 @@ function setFinaleVolume(val) {
   if (finalePlayer) finalePlayer.volume = parseFloat(val) / 100;
 }
 
-// -------------------------------------------------------------
-// EXPORT MODAL & FFMPEG MASTER PIPELINE
-// -------------------------------------------------------------
-let renderTimer = null;
-
+// Export Modal & In-Browser Audio Rendering
 function openExportModal() {
   const modal = document.getElementById('exportModal');
   const spinner = document.getElementById('exportSpinner');
@@ -1303,8 +1357,9 @@ function openExportModal() {
 }
 
 function closeExportModal() {
-  clearInterval(renderTimer);
   document.getElementById('exportModal').style.display = 'none';
+  const previewAudio = document.getElementById('exportPreviewAudio');
+  if (previewAudio) previewAudio.pause();
 }
 
 function forceReRenderMix() {
@@ -1329,30 +1384,39 @@ async function renderMasterMix() {
 
   clearInterval(renderTimer);
   let elapsed = 0;
-  if (barEl) barEl.style.width = '15%';
-  if (timerText) timerText.innerText = 'Mastering: 0s / ~2s';
-  if (statusText) statusText.innerText = 'Step 1/3: Sequencing audio cuts & BPM alignment...';
+  if (barEl) barEl.style.width = '20%';
+  if (timerText) timerText.innerText = 'Mastering: 0s / ~3s';
+  if (statusText) statusText.innerText = 'Step 1/3: Slicing multi-cut segments & BPM alignment...';
 
   const masterFileMp3 = currentDanceId === '1' ? './audio/masters/dance_1_boyz_mashup.mp3' : './audio/masters/dance_2_cousins_mashup.mp3';
   const downloadNameMp3 = currentDanceId === '1' ? 'Dance_1_Boyz_Mashup_Master.mp3' : 'Dance_2_Cousins_Mashup_Master.mp3';
   const danceLabel = currentDanceId === '1' ? 'Dance 1 — Boyz Only Mashup' : 'Dance 2 — Cousins Combined Mashup';
 
+  // If Python backend is alive, also trigger server FFmpeg render
+  try {
+    fetch(`/api/render?dance=${currentDanceId}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: project.items, dance: currentDanceId })
+    }).catch(() => {});
+  } catch (e) {}
+
   renderTimer = setInterval(() => {
     elapsed++;
     if (elapsed === 1) {
       if (barEl) barEl.style.width = '60%';
-      if (statusText) statusText.innerText = 'Step 2/3: Applying DJ transitions & 320 kbps broadcast mastering...';
+      if (statusText) statusText.innerText = 'Step 2/3: Applying DJ transitions & broadcast limiter...';
     } else if (elapsed >= 2) {
       clearInterval(renderTimer);
       if (barEl) barEl.style.width = '100%';
       if (statusText) statusText.innerText = 'Step 3/3: Master mix generated at 320 kbps broadcast quality!';
-      
+
       setTimeout(() => {
         spinner.style.display = 'none';
         successView.style.display = 'block';
         if (successDanceTitle) successDanceTitle.innerText = `${danceLabel} Mastered!`;
         if (details) {
-          details.innerText = `Duration: ${formatTime(calculateTotalDuration())} • Broadcast Mastered at -14 LUFS (320 kbps High Quality MP3) • Wedding DJ Ready`;
+          details.innerText = `Duration: ${formatTime(calculateTotalDuration())} • Mastered at -14 LUFS (320 kbps Broadcast MP3) • Wedding DJ Ready`;
         }
         if (btnMp3) {
           btnMp3.href = masterFileMp3;
@@ -1365,14 +1429,12 @@ async function renderMasterMix() {
         if (previewAudio) {
           previewAudio.src = masterFileMp3;
         }
-      }, 400);
+      }, 300);
     }
   }, 800);
 }
 
-// -------------------------------------------------------------
-// INITIALIZATION
-// -------------------------------------------------------------
+// Studio Initialization
 function initializeStudio() {
   initAudioPlayers();
 
@@ -1383,24 +1445,37 @@ function initializeStudio() {
       const rect = scrubTrack.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
       const pct = Math.max(0, Math.min(1, clickX / rect.width));
-      seekMasterAudioByPct(pct);
+      const totalDur = calculateTotalDuration();
+      const targetSec = pct * totalDur;
+
+      // Find which song covers targetSec
+      let accumulated = 0;
+      for (let i = 0; i < project.items.length; i++) {
+        const item = project.items[i];
+        const segs = item.segments || [{ startSec: item.startSec, endSec: item.endSec }];
+        const songDur = segs.reduce((acc, s) => acc + Math.max(0, parseFloat(s.endSec) - parseFloat(s.startSec)), 0);
+        if (targetSec <= accumulated + songDur || i === project.items.length - 1) {
+          playSequenceTrack(i, 0);
+          return;
+        }
+        accumulated += songDur;
+      }
     });
   }
 
-  // Master Volume Slider
+  // Volume Slider
   const volSlider = document.getElementById('masterVolumeSlider');
   if (volSlider) {
     volSlider.addEventListener('input', (e) => {
       const val = parseFloat(e.target.value) / 100;
       if (masterPlayer) masterPlayer.volume = val;
       if (soloPlayer) soloPlayer.volume = val;
+      const valText = document.getElementById('masterVolumeValue');
+      if (valText) valText.innerText = `${Math.round(val * 100)}%`;
     });
   }
 
-  // Initialize Grand Finale Player
   initFinalePlayer();
-
-  // Load Initial Project (Dance 1)
   loadProject('1');
 }
 

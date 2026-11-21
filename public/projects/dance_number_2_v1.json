@@ -18,7 +18,7 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=f92Pa3DWsaw",
       "startSec": 15,
       "endSec": 62,
-      "durationSec": 47,
+      "durationSec": 47.0,
       "originalBpm": 130,
       "targetBpm": 130,
       "key": "A Minor",
@@ -32,9 +32,17 @@
         "name": "Dhol Roll into Family Clapping Groove",
         "description": "Smooth 2.0-second crossfade blending modern beats directly into Gallan Goodiyaan!"
       },
-      "audioUrl": "./audio/d2/1_d2_1_veere_di_wedding.mp3",
+      "audioUrl": "./audio/d2/1_veere_di_wedding.mp3",
       "clipBaseStart": 15,
-      "clipBaseEnd": 62
+      "clipBaseEnd": 62,
+      "fullDurationSec": 203.0,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 15.0,
+          "endSec": 62.0
+        }
+      ]
     },
     {
       "id": "d2_song2",
@@ -47,7 +55,7 @@
       "youtubeUrl": "https://www.youtube.com/results?search_query=Gallan+Goodiyaan+official+song",
       "startSec": 45,
       "endSec": 95,
-      "durationSec": 50,
+      "durationSec": 50.0,
       "originalBpm": 128,
       "targetBpm": 128,
       "key": "D Major",
@@ -61,9 +69,17 @@
         "name": "Snappy Drum Fill into Wedding Thumkas",
         "description": "Seamless 2.0-second beat crossfade into Nachde Ne Saare!"
       },
-      "audioUrl": "./audio/d2/2_d2_2_gallan_goodiyaan.mp3",
+      "audioUrl": "./audio/d2/2_gallan_goodiyaan.mp3",
       "clipBaseStart": 45,
-      "clipBaseEnd": 95
+      "clipBaseEnd": 95,
+      "fullDurationSec": 278.3,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 45.0,
+          "endSec": 95.0
+        }
+      ]
     },
     {
       "id": "d2_song3",
@@ -76,7 +92,7 @@
       "youtubeUrl": "https://youtu.be/HgIW7P4dsXU",
       "startSec": 30,
       "endSec": 76,
-      "durationSec": 46,
+      "durationSec": 46.0,
       "originalBpm": 124,
       "targetBpm": 124,
       "key": "F# Minor",
@@ -90,9 +106,17 @@
         "name": "Dholak Riser into Queen Groove",
         "description": "Accelerating dholak fill dropping straight into London Thumakda!"
       },
-      "audioUrl": "./audio/d2/3_d2_3_nachde_ne_saare.mp3",
+      "audioUrl": "./audio/d2/3_nachde_ne_saare.mp3",
       "clipBaseStart": 30,
-      "clipBaseEnd": 76
+      "clipBaseEnd": 76,
+      "fullDurationSec": 202.4,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 30.0,
+          "endSec": 76.0
+        }
+      ]
     },
     {
       "id": "d2_song4",
@@ -105,7 +129,7 @@
       "youtubeUrl": "https://youtu.be/udra3Mfw2oo",
       "startSec": 22,
       "endSec": 68,
-      "durationSec": 46,
+      "durationSec": 46.0,
       "originalBpm": 130,
       "targetBpm": 130,
       "key": "B Minor",
@@ -119,9 +143,17 @@
         "name": "Retro Vinyl Spin into Ding Dong Courtship",
         "description": "DJ spin transition dropping into the flirty retro bounce of Ding Dong Dole!"
       },
-      "audioUrl": "./audio/d2/4_d2_4_london_thumakda.mp3",
+      "audioUrl": "./audio/d2/4_london_thumakda.mp3",
       "clipBaseStart": 22,
-      "clipBaseEnd": 68
+      "clipBaseEnd": 68,
+      "fullDurationSec": 214.5,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 22.0,
+          "endSec": 68.0
+        }
+      ]
     },
     {
       "id": "d2_song6",
@@ -134,7 +166,7 @@
       "youtubeUrl": "https://www.youtube.com/results?search_query=Sauda+Khara+Khara+Good+Newwz+official",
       "startSec": 25,
       "endSec": 75,
-      "durationSec": 50,
+      "durationSec": 50.0,
       "originalBpm": 130,
       "targetBpm": 130,
       "key": "F Minor",
@@ -148,9 +180,17 @@
         "name": "Explosive Dholak Crash into Bhangra Anthem",
         "description": "Massive dhol crescendo exploding straight into Oh Ho Ho Ho!"
       },
-      "audioUrl": "./audio/d2/5_d2_6_sauda_khara_khara.mp3",
+      "audioUrl": "./audio/d2/5_sauda_khara_khara.mp3",
       "clipBaseStart": 25,
-      "clipBaseEnd": 75
+      "clipBaseEnd": 75,
+      "fullDurationSec": 221.9,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 25.0,
+          "endSec": 75.0
+        }
+      ]
     },
     {
       "id": "d2_song7",
@@ -163,7 +203,7 @@
       "youtubeUrl": "https://www.youtube.com/results?search_query=Oh+Ho+Ho+Ho+Ishq+Tera+Tadpave+original",
       "startSec": 15,
       "endSec": 65,
-      "durationSec": 50,
+      "durationSec": 50.0,
       "originalBpm": 136,
       "targetBpm": 136,
       "key": "B Minor",
@@ -177,9 +217,17 @@
         "name": "Crowd Cheering & Reverb Outro",
         "description": "Triumphant family celebration finale outro with applause ring-out!"
       },
-      "audioUrl": "./audio/d2/6_d2_7_oh_ho_ho_ho.mp3",
+      "audioUrl": "./audio/d2/6_oh_ho_ho_ho.mp3",
       "clipBaseStart": 15,
-      "clipBaseEnd": 65
+      "clipBaseEnd": 65,
+      "fullDurationSec": 235.2,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 15.0,
+          "endSec": 65.0
+        }
+      ]
     },
     {
       "id": "d2_song5",
@@ -192,7 +240,7 @@
       "youtubeUrl": "https://www.youtube.com/results?search_query=Ding+Dong+Dole+original+song",
       "startSec": 35,
       "endSec": 80,
-      "durationSec": 45,
+      "durationSec": 45.0,
       "originalBpm": 126,
       "targetBpm": 126,
       "key": "A Minor",
@@ -206,9 +254,17 @@
         "name": "Heavy Sub-Bass Drop into Sauda Khara Khara",
         "description": "Punchy sub-bass sweep into the high-voltage Sukhbir beat!"
       },
-      "audioUrl": "./audio/d2/7_d2_5_ding_dong_dole.mp3",
+      "audioUrl": "./audio/d2/7_ding_dong_dole.mp3",
       "clipBaseStart": 35,
-      "clipBaseEnd": 80
+      "clipBaseEnd": 80,
+      "fullDurationSec": 344.5,
+      "segments": [
+        {
+          "id": "seg_1",
+          "startSec": 35.0,
+          "endSec": 80.0
+        }
+      ]
     }
   ]
 }
