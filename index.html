@@ -67,7 +67,13 @@
     <button class="nav-tab-btn" id="tabFinale" onclick="switchDanceTab('finale')">
       🎆 Grand Finale — Deewangi Deewangi <span class="tab-badge" id="tabBadgeFinale">Full Song (8m 57s)</span>
     </button>
+      <button class="nav-tab-btn" id="tabCustom" onclick="switchDanceTab('custom')">
+      ✨ Custom Mashup <span class="tab-badge tab-badge-new" id="tabBadgeCustom">Upload & Mix</span>
+    </button>
   </nav>
+
+  <!-- Hidden File Input for Custom Mashup Audio Uploads -->
+  <input type="file" id="customAudioInput" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg" multiple style="display:none;" onchange="handleAudioUpload(event)">
 
   <!-- Master Transport Bar (for Dance 1 & Dance 2) -->
   <section class="master-transport-bar" id="masterTransportBar">

@@ -503,6 +503,20 @@ const DANCE_2_DATA = {
   ]
 };
 
+
+const CUSTOM_PROJECT_TEMPLATE = {
+  "projectName": "CUSTOM SANGEET MASHUP",
+  "occasion": "Custom Sangeet Performance",
+  "performance": "Custom Choreography Sequence",
+  "targetDurationSec": 300,
+  "targetDurationFormatted": "05:00",
+  "maxDurationSec": 360,
+  "created": "2026-11-21",
+  "items": []
+};
+
+const customFileStore = {};
+
 let project = null;
 let currentDanceId = '1';
 let isSeqPlaying = false;
@@ -525,7 +539,7 @@ function initAudioPlayers() {
   if (!soloPlayer) soloPlayer = document.getElementById('soloAudioPlayer');
   if (!finalePlayer) finalePlayer = document.getElementById('finaleAudioPlayer');
 
-  if (masterPlayer) {
+  if (masterPlayer && masterPlayer.addEventListener) {
     masterPlayer.removeEventListener('timeupdate', onMasterTimeUpdate);
     masterPlayer.addEventListener('timeupdate', onMasterTimeUpdate);
     masterPlayer.removeEventListener('ended', onMasterTrackEnded);
@@ -533,7 +547,7 @@ function initAudioPlayers() {
     masterPlayer.addEventListener('error', (e) => console.warn('Master player error:', e));
   }
 
-  if (soloPlayer) {
+  if (soloPlayer && soloPlayer.addEventListener) {
     soloPlayer.removeEventListener('timeupdate', onSoloTimeUpdate);
     soloPlayer.addEventListener('timeupdate', onSoloTimeUpdate);
     soloPlayer.removeEventListener('ended', stopMasterPlayback);
@@ -596,6 +610,14 @@ function updateTotalDurationDisplay() {
 function autoSaveProject() {
   if (currentDanceId === 'finale' || !project || !project.items) return;
 
+  if (currentDanceId === 'custom') {
+    try {
+      const clone = JSON.parse(JSON.stringify(project));
+      localStorage.setItem('dancing_cousins_custom_v1', JSON.stringify(clone));
+    } catch (e) {}
+    return;
+  }
+
   const isDance2 = (String(currentDanceId) === '2');
   const hasD2Items = project.items.some(it => (it.id && it.id.startsWith('d2_')) || (it.fileName && it.fileName.startsWith('d2_')));
   if (isDance2 !== hasD2Items) {
@@ -637,6 +659,32 @@ try {
 async function loadProject(danceId = '1') {
   currentDanceId = String(danceId);
   project = null;
+
+  if (currentDanceId === 'custom') {
+    const localKey = 'dancing_cousins_custom_v1';
+    try {
+      const savedLocal = localStorage.getItem(localKey);
+      if (savedLocal) {
+        project = JSON.parse(savedLocal);
+        if (project && project.items) {
+          project.items.forEach(it => {
+            if (customFileStore[it.id]) {
+              it.audioUrl = URL.createObjectURL(customFileStore[it.id]);
+            }
+          });
+        }
+      }
+    } catch (e) {}
+
+    if (!project) {
+      project = JSON.parse(JSON.stringify(CUSTOM_PROJECT_TEMPLATE));
+    }
+
+    renderTracks();
+    updateTotalDurationDisplay();
+    currentSeqIndex = 0;
+    return;
+  }
 
   const localKey = 'dancing_cousins_v4_d' + currentDanceId;
   let loadedFromLocal = false;
@@ -710,6 +758,10 @@ function switchDanceTab(danceId) {
   if (danceId === '1') document.getElementById('tabDance1').classList.add('active');
   else if (danceId === '2') document.getElementById('tabDance2').classList.add('active');
   else if (danceId === 'finale') document.getElementById('tabFinale').classList.add('active');
+  else if (danceId === 'custom') {
+    const tabCustom = document.getElementById('tabCustom');
+    if (tabCustom) tabCustom.classList.add('active');
+  }
 
   const workstation = document.getElementById('workstationLayout');
   const transportBar = document.getElementById('masterTransportBar');
@@ -744,8 +796,10 @@ function switchDanceTab(danceId) {
     if (headerSubhead) {
       if (danceId === '1') {
         headerSubhead.innerText = 'Dance 1: Boyz Only (6 Songs)';
-      } else {
+      } else if (danceId === '2') {
         headerSubhead.innerText = 'Dance 2: Cousins Combined (7 Songs)';
+      } else if (danceId === 'custom') {
+        headerSubhead.innerText = '✨ Custom Mashup Studio: Upload Songs & Craft Your Mix';
       }
     }
 
@@ -807,6 +861,68 @@ function renderTracks() {
   if (!container || !project) return;
   container.innerHTML = '';
 
+  if (currentDanceId === 'custom' && (!project.items || project.items.length === 0)) {
+    const uploadHero = document.createElement('div');
+    uploadHero.className = 'custom-upload-hero-zone';
+    uploadHero.id = 'customUploadZone';
+    uploadHero.ondragover = handleDragOver;
+    uploadHero.ondragleave = handleDragLeave;
+    uploadHero.ondrop = handleDrop;
+    uploadHero.innerHTML = `
+      <div class="upload-icon-pulse">✨</div>
+      <h2>Create Brand New Custom Mashup</h2>
+      <p>Upload your favourite songs (.mp3, .wav, .m4a, .aac) from your phone or PC.<br>You can trim multiple cuts per song, arrange the sequence, and export your DJ master mix!</p>
+      <button class="btn btn-primary btn-large upload-btn-cta" onclick="triggerFileUpload()">
+        <span class="btn-icon">📁</span> Choose Audio Files to Upload
+      </button>
+      <div class="upload-drag-hint">or drag & drop audio files directly anywhere in this box</div>
+      <div class="upload-features-grid">
+        <div class="feature-item">
+          <span class="f-icon">✂️</span>
+          <strong>Multi-Cut Trimming</strong>
+          <small>Slice multiple exact parts from each song</small>
+        </div>
+        <div class="feature-item">
+          <span class="f-icon">📊</span>
+          <strong>Waveform Highlights</strong>
+          <small>Visual cueing for dance practice</small>
+        </div>
+        <div class="feature-item">
+          <span class="f-icon">🎛️</span>
+          <strong>Master Sequencer</strong>
+          <small>Full seamless mix playback</small>
+        </div>
+        <div class="feature-item">
+          <span class="f-icon">⚡</span>
+          <strong>In-Browser Master Export</strong>
+          <small>Lossless studio audio download</small>
+        </div>
+      </div>
+    `;
+    container.appendChild(uploadHero);
+    return;
+  }
+
+  if (currentDanceId === 'custom' && project.items.length > 0) {
+    const topbar = document.createElement('div');
+    topbar.className = 'custom-tracks-topbar';
+    topbar.innerHTML = `
+      <div class="topbar-left">
+        <span class="custom-mashup-pill">✨ Custom Mix Studio</span>
+        <span class="custom-count-badge">${project.items.length} Track${project.items.length > 1 ? 's' : ''}</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-primary btn-icon-sm" onclick="triggerFileUpload()" title="Add another audio track from your device">
+          <span>➕</span> Add More Songs
+        </button>
+        <button class="btn btn-secondary btn-icon-sm" onclick="clearCustomMashup()" style="color:#ef4444; border-color: rgba(239, 68, 68, 0.4);" title="Start over">
+          <span>🗑️</span> Clear Mix
+        </button>
+      </div>
+    `;
+    container.appendChild(topbar);
+  }
+
   project.items.forEach((item, idx) => {
     const card = document.createElement('div');
     card.className = 'track-card';
@@ -853,7 +969,9 @@ function renderTracks() {
         <div class="track-meta-left">
           <span class="track-order-badge">#${idx + 1}</span>
           <div class="track-title-group">
-            <h3>${item.title} <a href="${item.youtubeUrl}" target="_blank" class="track-source-link" title="Official YouTube Reference">↗ YouTube</a></h3>
+            <h3 onclick="editTrackTitle(${idx})" style="cursor: pointer;" title="Click to rename song">
+              ${item.title} ${currentDanceId === 'custom' ? '<span style="font-size: 0.75rem; color: #f59e0b; opacity: 0.85; margin-left: 6px;">✏️</span>' : (item.youtubeUrl ? `<a href="${item.youtubeUrl}" target="_blank" class="track-source-link" onclick="event.stopPropagation()" title="Official YouTube Reference">↗ YouTube</a>` : '')}
+            </h3>
             <span class="movie-singer">
               ${item.movie} • <strong>${item.singer || 'Original Recording'}</strong> (${item.originalBpm} BPM)
               <span class="full-song-badge">Full Song: ${formatTime(item.fullDurationSec)}</span>
@@ -891,8 +1009,8 @@ function renderTracks() {
         </div>
       </div>
 
-      <div class="dance-cues-tip">
-        <strong>Choreography Cue:</strong> ${item.danceCues || 'Synchronized signature hook step for wedding dance.'}
+      <div class="dance-cues-tip" onclick="editDanceCue(${idx})" style="cursor: pointer;" title="Click to edit choreography notes">
+        <strong>Choreography Cue:</strong> ${item.danceCues || 'Synchronized signature hook step for wedding dance.'} ${currentDanceId === 'custom' ? '<span style="font-size: 0.75rem; color: #f59e0b; opacity: 0.85;">✏️</span>' : ''}
       </div>
     `;
 
@@ -904,6 +1022,17 @@ function renderTracks() {
       if (cvs) drawWaveform(cvs, item.segments, item.fullDurationSec);
     }, 0);
   });
+
+  if (currentDanceId === 'custom' && project.items.length > 0) {
+    const bottomAdd = document.createElement('div');
+    bottomAdd.className = 'custom-bottom-add-zone';
+    bottomAdd.innerHTML = `
+      <button class="btn btn-secondary btn-large" onclick="triggerFileUpload()" style="border-style: dashed; padding: 12px 28px;">
+        ➕ Add Another Song to Custom Mashup
+      </button>
+    `;
+    container.appendChild(bottomAdd);
+  }
 }
 
 // Multi-Segment Functions
@@ -1065,7 +1194,7 @@ function playSequenceTrack(trackIndex, segIndex = 0) {
     return;
   }
 
-  if (soloPlayer) {
+  if (soloPlayer && soloPlayer.addEventListener) {
     soloPlayer.pause();
     isSoloPlaying = false;
     currentSoloTrackIdx = -1;
@@ -1333,6 +1462,20 @@ function openExportModal() {
   const btnMp3 = document.getElementById('btnDownloadMp3');
   const btnWav = document.getElementById('btnDownloadWav');
 
+  if (currentDanceId === 'custom') {
+    if (!project || !project.items || project.items.length === 0) {
+      alert('Please upload at least one song before exporting your custom mashup!');
+      return;
+    }
+    if (modalTitle) modalTitle.innerText = '⚡ Exporting Custom Bollywood Mashup...';
+    if (danceTitle) danceTitle.innerText = 'Custom Sangeet Mashup Master';
+    modal.style.display = 'flex';
+    spinner.style.display = 'block';
+    successView.style.display = 'none';
+    renderCustomOfflineMix();
+    return;
+  }
+
   const danceName = currentDanceId === '1' ? 'Dance 1 (Boyz Only)' : 'Dance 2 (Cousins Combined)';
   if (modalTitle) modalTitle.innerText = `⚡ Exporting ${danceName}...`;
   if (danceTitle) danceTitle.innerText = `${danceName} Master Mix`;
@@ -1483,4 +1626,406 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeStudio);
 } else {
   initializeStudio();
+}
+
+
+// =========================================================
+// CUSTOM MASHUP UPLOAD, MANAGEMENT & IN-BROWSER EXPORTER
+// =========================================================
+
+function triggerFileUpload() {
+  const input = document.getElementById('customAudioInput');
+  if (input) {
+    input.value = '';
+    input.click();
+  }
+}
+
+async function handleAudioUpload(event) {
+  const files = event.target.files;
+  if (!files || files.length === 0) return;
+  await processUploadedFiles(files);
+}
+
+function handleDragOver(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  const zone = document.getElementById('customUploadZone');
+  if (zone) zone.classList.add('drag-active');
+}
+
+function handleDragLeave(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  const zone = document.getElementById('customUploadZone');
+  if (zone) zone.classList.remove('drag-active');
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  const zone = document.getElementById('customUploadZone');
+  if (zone) zone.classList.remove('drag-active');
+  if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+    processUploadedFiles(e.dataTransfer.files);
+  }
+}
+
+function getAudioDuration(url) {
+  return new Promise((resolve) => {
+    const audio = new Audio();
+    audio.preload = 'metadata';
+    audio.src = url;
+    let resolved = false;
+    audio.addEventListener('loadedmetadata', () => {
+      if (!resolved) {
+        resolved = true;
+        resolve(audio.duration || 210.0);
+      }
+    });
+    audio.addEventListener('error', () => {
+      if (!resolved) {
+        resolved = true;
+        resolve(210.0);
+      }
+    });
+    setTimeout(() => {
+      if (!resolved) {
+        resolved = true;
+        resolve(210.0);
+      }
+    }, 3500);
+  });
+}
+
+async function processUploadedFiles(fileList) {
+  if (currentDanceId !== 'custom') {
+    switchDanceTab('custom');
+  }
+
+  if (!project) {
+    project = JSON.parse(JSON.stringify(CUSTOM_PROJECT_TEMPLATE));
+  }
+  if (!project.items) project.items = [];
+
+  const toast = document.createElement('div');
+  toast.className = 'upload-processing-toast';
+  toast.innerText = `Loading ${fileList.length} audio file(s)...`;
+  document.body.appendChild(toast);
+
+  for (let i = 0; i < fileList.length; i++) {
+    const file = fileList[i];
+    try {
+      const blobUrl = URL.createObjectURL(file);
+      const cleanTitle = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
+      const rawDur = await getAudioDuration(blobUrl);
+      const safeDuration = (rawDur && rawDur > 0) ? rawDur : 210.0;
+      const initialCutEnd = Math.min(45, safeDuration);
+
+      const itemId = 'custom_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
+      customFileStore[itemId] = file;
+
+      const newItem = {
+        id: itemId,
+        order: project.items.length + 1,
+        title: cleanTitle,
+        movie: "Custom Mix",
+        singer: "Uploaded Track",
+        fileName: file.name,
+        audioUrl: blobUrl,
+        fullDurationSec: parseFloat(safeDuration.toFixed(1)),
+        startSec: 0,
+        endSec: parseFloat(initialCutEnd.toFixed(1)),
+        durationSec: parseFloat(initialCutEnd.toFixed(1)),
+        originalBpm: 128,
+        danceCues: "Custom dance sequence & hook steps",
+        segments: [
+          {
+            id: 'seg_1',
+            startSec: 0,
+            endSec: parseFloat(initialCutEnd.toFixed(1))
+          }
+        ]
+      };
+
+      project.items.push(newItem);
+    } catch (e) {
+      console.warn("Failed to process uploaded file:", file.name, e);
+    }
+  }
+
+  if (toast.parentNode) {
+    toast.parentNode.removeChild(toast);
+  }
+
+  renderTracks();
+  updateTotalDurationDisplay();
+  autoSaveProject();
+}
+
+function clearCustomMashup() {
+  if (!confirm('Are you sure you want to clear all custom songs and start fresh?')) return;
+  stopMasterPlayback();
+  project.items = [];
+  try {
+    localStorage.removeItem('dancing_cousins_custom_v1');
+  } catch (e) {}
+  renderTracks();
+  updateTotalDurationDisplay();
+}
+
+function editTrackTitle(idx) {
+  const item = project.items[idx];
+  if (!item) return;
+  const newTitle = prompt('Enter song title:', item.title);
+  if (newTitle && newTitle.trim()) {
+    item.title = newTitle.trim();
+    renderTracks();
+    autoSaveProject();
+  }
+}
+
+function editDanceCue(idx) {
+  const item = project.items[idx];
+  if (!item) return;
+  const newCue = prompt('Enter choreography note or dancer names:', item.danceCues || '');
+  if (newCue !== null) {
+    item.danceCues = newCue.trim();
+    renderTracks();
+    autoSaveProject();
+  }
+}
+
+function reMixAndPlay() {
+  stopMasterPlayback();
+  playSequenceTrack(0, 0);
+}
+
+function saveProject() {
+  autoSaveProject();
+  try {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(project, null, 2));
+    const dlAnchor = document.createElement('a');
+    dlAnchor.setAttribute("href", dataStr);
+    dlAnchor.setAttribute("download", `sangeet_mashup_plan_${currentDanceId}.json`);
+    dlAnchor.click();
+  } catch (e) {
+    alert('Mashup configuration saved to browser storage!');
+  }
+}
+
+// Convert Web Audio API AudioBuffer to 16-bit PCM WAV Blob
+function audioBufferToWavBlob(buffer) {
+  const numChannels = buffer.numberOfChannels;
+  const sampleRate = buffer.sampleRate;
+  const format = 1; // PCM
+  const bitDepth = 16;
+
+  let result;
+  if (numChannels === 2) {
+    result = interleave(buffer.getChannelData(0), buffer.getChannelData(1));
+  } else {
+    result = buffer.getChannelData(0);
+  }
+
+  const bytesPerSample = bitDepth / 8;
+  const blockAlign = numChannels * bytesPerSample;
+  const dataSize = result.length * bytesPerSample;
+  const headerSize = 44;
+  const totalSize = headerSize + dataSize;
+  const arrayBuffer = new ArrayBuffer(totalSize);
+  const dataView = new DataView(arrayBuffer);
+
+  function writeString(view, offset, string) {
+    for (let i = 0; i < string.length; i++) {
+      view.setUint8(offset + i, string.charCodeAt(i));
+    }
+  }
+
+  writeString(dataView, 0, 'RIFF');
+  dataView.setUint32(4, totalSize - 8, true);
+  writeString(dataView, 8, 'WAVE');
+  writeString(dataView, 12, 'fmt ');
+  dataView.setUint32(16, 16, true);
+  dataView.setUint16(20, format, true);
+  dataView.setUint16(22, numChannels, true);
+  dataView.setUint32(24, sampleRate, true);
+  dataView.setUint32(28, sampleRate * blockAlign, true);
+  dataView.setUint16(32, blockAlign, true);
+  dataView.setUint16(34, bitDepth, true);
+  writeString(dataView, 36, 'data');
+  dataView.setUint32(40, dataSize, true);
+
+  let offset = 44;
+  for (let i = 0; i < result.length; i++, offset += 2) {
+    let s = Math.max(-1, Math.min(1, result[i]));
+    dataView.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+  }
+
+  return new Blob([dataView], { type: 'audio/wav' });
+}
+
+function interleave(inputL, inputR) {
+  const length = inputL.length + inputR.length;
+  const result = new Float32Array(length);
+  let index = 0;
+  let inputIndex = 0;
+  while (index < length) {
+    result[index++] = inputL[inputIndex];
+    result[index++] = inputR[inputIndex];
+    inputIndex++;
+  }
+  return result;
+}
+
+// In-Browser Audio Mixing using OfflineAudioContext
+async function renderCustomOfflineMix() {
+  const spinner = document.getElementById('exportSpinner');
+  const successView = document.getElementById('exportSuccessView');
+  const details = document.getElementById('exportSuccessDetails');
+  const statusText = document.getElementById('exportStatusText');
+  const timerText = document.getElementById('exportTimerText');
+  const barEl = document.getElementById('exportProgressBar');
+  const btnMp3 = document.getElementById('btnDownloadMp3');
+  const btnWav = document.getElementById('btnDownloadWav');
+  const previewAudio = document.getElementById('exportPreviewAudio');
+  const successDanceTitle = document.getElementById('exportSuccessDanceTitle');
+
+  try {
+    if (barEl) barEl.style.width = '15%';
+    if (statusText) statusText.innerText = 'Decoding audio tracks into memory...';
+    if (timerText) timerText.innerText = 'Rendering: 0% / 100%';
+
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    const tempCtx = new AudioContextClass();
+
+    const decodedTracks = [];
+    for (let i = 0; i < project.items.length; i++) {
+      const item = project.items[i];
+      if (statusText) statusText.innerText = `Decoding track ${i + 1} of ${project.items.length}: "${item.title}"...`;
+      if (barEl) barEl.style.width = `${15 + Math.round((i / project.items.length) * 35)}%`;
+
+      let arrayBuffer;
+      if (customFileStore[item.id]) {
+        arrayBuffer = await customFileStore[item.id].arrayBuffer();
+      } else {
+        const resp = await fetch(item.audioUrl);
+        arrayBuffer = await resp.arrayBuffer();
+      }
+
+      const decodedBuf = await tempCtx.decodeAudioData(arrayBuffer);
+      decodedTracks.push({ item, buffer: decodedBuf });
+    }
+
+    if (statusText) statusText.innerText = 'Assembling timeline cuts & crossfades...';
+    if (barEl) barEl.style.width = '60%';
+
+    const sampleRate = 44100;
+    const crossfadeDuration = 1.0;
+
+    let currentTimeSec = 0;
+    const scheduledCuts = [];
+
+    for (let tIdx = 0; tIdx < decodedTracks.length; tIdx++) {
+      const { item, buffer } = decodedTracks[tIdx];
+      const segs = item.segments && item.segments.length ? item.segments : [{ startSec: item.startSec, endSec: item.endSec }];
+
+      for (let sIdx = 0; sIdx < segs.length; sIdx++) {
+        const seg = segs[sIdx];
+        const segStart = Math.min(buffer.duration, Math.max(0, parseFloat(seg.startSec) || 0));
+        const segEnd = Math.min(buffer.duration, Math.max(segStart + 0.1, parseFloat(seg.endSec) || buffer.duration));
+        const segDur = segEnd - segStart;
+
+        scheduledCuts.push({
+          buffer,
+          trackStartSec: segStart,
+          trackEndSec: segEnd,
+          timelineStartSec: currentTimeSec,
+          duration: segDur,
+          isFirstSegOfSong: sIdx === 0,
+          isLastSegOfSong: sIdx === segs.length - 1,
+          isFirstSong: tIdx === 0,
+          isLastSong: tIdx === decodedTracks.length - 1
+        });
+
+        currentTimeSec += segDur;
+      }
+
+      if (tIdx < decodedTracks.length - 1) {
+        currentTimeSec = Math.max(0, currentTimeSec - crossfadeDuration);
+      }
+    }
+
+    const totalMixSec = Math.max(1, currentTimeSec);
+    const totalFrames = Math.ceil(totalMixSec * sampleRate);
+
+    if (statusText) statusText.innerText = `Synthesizing ${formatTime(totalMixSec)} master mix...`;
+    if (barEl) barEl.style.width = '75%';
+
+    const offlineCtx = new OfflineAudioContext(2, totalFrames, sampleRate);
+
+    scheduledCuts.forEach(cut => {
+      const source = offlineCtx.createBufferSource();
+      source.buffer = cut.buffer;
+
+      const gainNode = offlineCtx.createGain();
+
+      if (cut.isFirstSegOfSong && !cut.isFirstSong) {
+        gainNode.gain.setValueAtTime(0.001, cut.timelineStartSec);
+        gainNode.gain.exponentialRampToValueAtTime(1.0, cut.timelineStartSec + crossfadeDuration);
+      } else {
+        gainNode.gain.setValueAtTime(1.0, cut.timelineStartSec);
+      }
+
+      if (cut.isLastSegOfSong && !cut.isLastSong) {
+        const fadeOutStart = cut.timelineStartSec + cut.duration - crossfadeDuration;
+        gainNode.gain.setValueAtTime(1.0, Math.max(cut.timelineStartSec, fadeOutStart));
+        gainNode.gain.exponentialRampToValueAtTime(0.001, cut.timelineStartSec + cut.duration);
+      }
+
+      source.connect(gainNode);
+      gainNode.connect(offlineCtx.destination);
+
+      source.start(cut.timelineStartSec, cut.trackStartSec, cut.duration);
+    });
+
+    const renderedBuffer = await offlineCtx.startRendering();
+
+    if (statusText) statusText.innerText = 'Encoding lossless WAV master file...';
+    if (barEl) barEl.style.width = '95%';
+
+    const wavBlob = audioBufferToWavBlob(renderedBuffer);
+    const wavUrl = URL.createObjectURL(wavBlob);
+
+    if (barEl) barEl.style.width = '100%';
+    if (statusText) statusText.innerText = 'Master mix ready!';
+
+    setTimeout(() => {
+      spinner.style.display = 'none';
+      successView.style.display = 'block';
+
+      if (successDanceTitle) successDanceTitle.innerText = 'Custom Mashup Mastered!';
+      if (details) {
+        details.innerText = `Duration: ${formatTime(totalMixSec)} (${totalMixSec.toFixed(1)}s) • Lossless 44.1 kHz 16-bit Master WAV • Mobile & DJ Ready`;
+      }
+      if (btnMp3) {
+        btnMp3.innerText = '⬇ Download Master (WAV / Audio)';
+        btnMp3.href = wavUrl;
+        btnMp3.download = 'Custom_Sangeet_Mashup_Master.wav';
+      }
+      if (btnWav) {
+        btnWav.innerText = '⬇ Download Lossless Master (WAV)';
+        btnWav.href = wavUrl;
+        btnWav.download = 'Custom_Sangeet_Mashup_Master.wav';
+      }
+      if (previewAudio) {
+        previewAudio.src = wavUrl;
+      }
+    }, 400);
+
+  } catch (err) {
+    console.error('In-browser mix render error:', err);
+    if (statusText) statusText.innerText = 'Export error: ' + (err.message || 'Could not process audio.');
+    alert('Export error: ' + (err.message || 'Please check audio formats and try again.'));
+  }
 }
